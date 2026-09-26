@@ -103,6 +103,42 @@ jobs:
             samples-catalog/build/compose-previews/renders/
           if-no-files-found: warn
 
+  # The vendored Compose Multiplatform port (vendor/README.md): both targets compile, the port seam's
+  # tests pass, the desktop proof renders a real payload without Robolectric, and the Maven tree the
+  # publish workflow would push builds. On a pull request it also holds the port to its immutability
+  # rule: changed published bytes need a higher `portRevision` in vendor/a2ui-upstream.json.
+  cmp-port:
+    name: A2UI CMP port
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+      - name: portRevision increases with published changes
+        if: github.event_name == 'pull_request'
+        run: .github/scripts/check-a2ui-cmp-port-revision.sh "origin/${{ github.base_ref }}"
+      - uses: ./.github/actions/setup
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
+      - name: Compile (jvm + wasmJs), test, render and stage the Maven tree
+        run: >-
+          ./gradlew --stacktrace
+          :vendor:material3-a2ui:compileKotlinJvm
+          :vendor:material3-a2ui:compileKotlinWasmJs
+          :vendor:a2ui-port-runtime:jvmTest
+          :vendor:a2ui-port-runtime:compileTestKotlinWasmJs
+          :a2ui-desktop:test
+          publishA2uiCmpToBuildDir
+      - uses: actions/upload-artifact@v7.0.1
+        if: always()
+        with:
+          name: a2ui-cmp-port
+          path: |
+            a2ui-desktop/build/a2ui-desktop/
+            build/a2ui-cmp-maven/
+          if-no-files-found: warn
+
   ktfmt:
     name: ktfmtCheck
     runs-on: ubuntu-latest
