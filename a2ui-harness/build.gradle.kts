@@ -47,5 +47,6 @@ dependencies {
   api(libs.androidx.compose.ui)
 
   testImplementation(libs.a2ui.engine)
+  testImplementation(libs.robolectric)
   testImplementation(libs.kotlin.test.junit)
 }

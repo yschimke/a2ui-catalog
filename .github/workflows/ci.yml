@@ -83,12 +83,12 @@ jobs:
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
       # A render task exits 0 having written nothing when every capture fails the same way, so the
-      # count is asserted: 50 stickers and 19 sample screens.
+      # count is asserted: 50 stickers plus the A2UI document playground, and 19 sample screens.
       - run: ./gradlew :catalog:composePreviewRender :samples-catalog:composePreviewRender --stacktrace
       - name: Every preview produced a PNG
         run: |
           set -euo pipefail
-          for pair in catalog:50 samples-catalog:19; do
+          for pair in catalog:51 samples-catalog:19; do
             module="${pair%%:*}"; want="${pair##*:}"
             got=$(find "$module/build/compose-previews/renders" -name '*.png' | wc -l)
             echo "$module: $got / $want"
