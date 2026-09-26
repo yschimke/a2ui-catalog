@@ -30,8 +30,12 @@ import ee.schimke.composeai.preview.CatalogComponent
 // them (SampleScreen.kt) and these annotations are this repo's — which is why the inventory can be
 // annotated here rather than generated: nothing in this file is re-fetched by an import.
 //
-// Each card names its a2ui-catalog counterpart through `related`, so the served sheet links a
-// component's sticker to the sample screen that exercises it, and back.
+// Each card names, through `related`, every a2ui-catalog component its sample's initial payload
+// uses (the `type`s of the `A2uiComponentPayload`s the sample sends at its default settings, the
+// payload the render shows), its own component first. The server derives the reverse links from
+// these, so a component's sticker lists every sample screen that draws it: Button's lists Card,
+// Modal, Row and Column as well as the Button sample. Declared here only, as the Wear samples do;
+// a kit-side `related` would repeat each link.
 //
 // A phone-sized frame, because the sample is a SCREEN: the preview card is 240dp tall and the
 // controls stack beneath it, as on the compact-width layout of the demo.
@@ -53,7 +57,7 @@ fun ComponentListPreview() = DemoTheme { ComponentListScreen(onComponentSelected
   group = "Layout",
   noReference = SAMPLE,
   caption = "`RowSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related = ["a2ui-catalog=Row", "a2ui-catalog=Button", "a2ui-catalog=Text"],
 )
 @Preview(name = "Row", widthDp = 412, heightDp = 915)
 @Composable
@@ -64,7 +68,7 @@ fun RowSamplePreview() = SampleScreen(UiComponent.ROW) { RowSample(onPayloadUpda
   group = "Layout",
   noReference = SAMPLE,
   caption = "`ColumnSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related = ["a2ui-catalog=Column", "a2ui-catalog=Button", "a2ui-catalog=Text"],
 )
 @Preview(name = "Column", widthDp = 412, heightDp = 915)
 @Composable
@@ -75,7 +79,7 @@ fun ColumnSamplePreview() = SampleScreen(UiComponent.COLUMN) { ColumnSample(onPa
   group = "Layout",
   noReference = SAMPLE,
   caption = "`ListSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related = ["a2ui-catalog=List", "a2ui-catalog=Card", "a2ui-catalog=Text"],
 )
 @Preview(name = "List", widthDp = 412, heightDp = 915)
 @Composable
@@ -86,7 +90,14 @@ fun ListSamplePreview() = SampleScreen(UiComponent.LIST) { ListSample(onPayloadU
   group = "Layout",
   noReference = SAMPLE,
   caption = "`CardSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related =
+    [
+      "a2ui-catalog=Card",
+      "a2ui-catalog=Column",
+      "a2ui-catalog=Icon",
+      "a2ui-catalog=Text",
+      "a2ui-catalog=Button",
+    ],
 )
 @Preview(name = "Card", widthDp = 412, heightDp = 915)
 @Composable
@@ -97,7 +108,7 @@ fun CardSamplePreview() = SampleScreen(UiComponent.CARD) { CardSample(onPayloadU
   group = "Layout",
   noReference = SAMPLE,
   caption = "`TabsSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related = ["a2ui-catalog=Tabs", "a2ui-catalog=Card", "a2ui-catalog=Text"],
 )
 @Preview(name = "Tabs", widthDp = 412, heightDp = 915)
 @Composable
@@ -108,7 +119,14 @@ fun TabsSamplePreview() = SampleScreen(UiComponent.TABS) { TabsSample(onPayloadU
   group = "Layout",
   noReference = SAMPLE,
   caption = "`ModalSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related =
+    [
+      "a2ui-catalog=Modal",
+      "a2ui-catalog=Button",
+      "a2ui-catalog=Text",
+      "a2ui-catalog=Column",
+      "a2ui-catalog=Row",
+    ],
 )
 @Preview(name = "Modal", widthDp = 412, heightDp = 915)
 @Composable
@@ -119,7 +137,7 @@ fun ModalSamplePreview() = SampleScreen(UiComponent.MODAL) { ModalSample(onPaylo
   group = "Content",
   noReference = SAMPLE,
   caption = "`TextSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related = ["a2ui-catalog=Text"],
 )
 @Preview(name = "Text", widthDp = 412, heightDp = 915)
 @Composable
@@ -130,7 +148,7 @@ fun TextSamplePreview() = SampleScreen(UiComponent.TEXT) { TextSample(onPayloadU
   group = "Content",
   noReference = SAMPLE,
   caption = "`ImageSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related = ["a2ui-catalog=Image"],
 )
 @Preview(name = "Image", widthDp = 412, heightDp = 915)
 @Composable
@@ -141,7 +159,7 @@ fun ImageSamplePreview() = SampleScreen(UiComponent.IMAGE) { ImageSample(onPaylo
   group = "Content",
   noReference = SAMPLE,
   caption = "`IconSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related = ["a2ui-catalog=Icon"],
 )
 @Preview(name = "Icon", widthDp = 412, heightDp = 915)
 @Composable
@@ -152,7 +170,8 @@ fun IconSamplePreview() = SampleScreen(UiComponent.ICON) { IconSample(onPayloadU
   group = "Content",
   noReference = SAMPLE,
   caption = "`DividerSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related =
+    ["a2ui-catalog=Divider", "a2ui-catalog=Column", "a2ui-catalog=Row", "a2ui-catalog=Text"],
 )
 @Preview(name = "Divider", widthDp = 412, heightDp = 915)
 @Composable
@@ -164,7 +183,7 @@ fun DividerSamplePreview() =
   group = "Content",
   noReference = SAMPLE,
   caption = "`VideoSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related = ["a2ui-catalog=Video"],
 )
 @Preview(name = "Video", widthDp = 412, heightDp = 915)
 @Composable
@@ -175,7 +194,7 @@ fun VideoSamplePreview() = SampleScreen(UiComponent.VIDEO) { VideoSample(onPaylo
   group = "Content",
   noReference = SAMPLE,
   caption = "`AudioPlayerSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related = ["a2ui-catalog=AudioPlayer"],
 )
 @Preview(name = "AudioPlayer", widthDp = 412, heightDp = 915)
 @Composable
@@ -187,7 +206,7 @@ fun AudioPlayerSamplePreview() =
   group = "Input",
   noReference = SAMPLE,
   caption = "`ButtonSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related = ["a2ui-catalog=Button", "a2ui-catalog=Text"],
 )
 @Preview(name = "Button", widthDp = 412, heightDp = 915)
 @Composable
@@ -198,7 +217,7 @@ fun ButtonSamplePreview() = SampleScreen(UiComponent.BUTTON) { ButtonSample(onPa
   group = "Input",
   noReference = SAMPLE,
   caption = "`CheckBoxSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related = ["a2ui-catalog=CheckBox"],
 )
 @Preview(name = "CheckBox", widthDp = 412, heightDp = 915)
 @Composable
@@ -210,7 +229,7 @@ fun CheckBoxSamplePreview() =
   group = "Input",
   noReference = SAMPLE,
   caption = "`SliderSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related = ["a2ui-catalog=Slider"],
 )
 @Preview(name = "Slider", widthDp = 412, heightDp = 915)
 @Composable
@@ -221,7 +240,7 @@ fun SliderSamplePreview() = SampleScreen(UiComponent.SLIDER) { SliderSample(onPa
   group = "Input",
   noReference = SAMPLE,
   caption = "`TextFieldSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related = ["a2ui-catalog=TextField"],
 )
 @Preview(name = "TextField", widthDp = 412, heightDp = 915)
 @Composable
@@ -233,7 +252,7 @@ fun TextFieldSamplePreview() =
   group = "Input",
   noReference = SAMPLE,
   caption = "`DateTimeInputSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related = ["a2ui-catalog=DateTimeInput"],
 )
 @Preview(name = "DateTimeInput", widthDp = 412, heightDp = 915)
 @Composable
@@ -245,7 +264,7 @@ fun DateTimeInputSamplePreview() =
   group = "Input",
   noReference = SAMPLE,
   caption = "`ChoicePickerSample` at its initial settings, above the payload it produces.",
-  related = ["a2ui-catalog"],
+  related = ["a2ui-catalog=ChoicePicker"],
 )
 @Preview(name = "ChoicePicker", widthDp = 412, heightDp = 915)
 @Composable

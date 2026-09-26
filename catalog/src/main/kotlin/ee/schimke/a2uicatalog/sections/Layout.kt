@@ -54,7 +54,6 @@ private fun StretchedRow(justify: String) =
   noReference =
     "A2UI layout primitive drawn with foundation's Row; the M3 kit publishes no layout component.",
   caption = "Children side by side. `justify` spreads them along the row, `align` across it.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable
@@ -107,7 +106,6 @@ private fun ColumnOf(align: String) =
   noReference =
     "A2UI layout primitive drawn with foundation's Column; the M3 kit publishes no layout component.",
   caption = "Children stacked vertically. `align: start` keeps each child at its own width.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable
@@ -149,7 +147,6 @@ private fun ListOf(direction: String) =
     "A2UI scrolling container drawn with foundation's lazy lists; the M3 kit's `List` is a list " +
       "ITEM with leading and trailing slots, which A2UI does not publish.",
   caption = "A scrolling run of children. Vertical by default.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable

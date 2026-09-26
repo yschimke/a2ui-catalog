@@ -36,7 +36,6 @@ private fun TextFieldOf(variant: String, value: String, label: String = "Full na
   // M3 kit `Text field` / Outlined — the catalog draws every variant with `OutlinedTextField`.
   reference = "figma:ocdacdEsnHipMJD3egzxKb/52798:24397",
   caption = "A labelled text input bound to the data model. `shortText` by default.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable
@@ -93,7 +92,6 @@ private fun CheckBoxOf(checked: Boolean) =
   // M3 kit `Checkbox` / Checked. The catalog draws a Material `Checkbox` beside its label.
   reference = "figma:ocdacdEsnHipMJD3egzxKb/51859:5629",
   caption = "A labelled boolean bound to the data model.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable
@@ -136,7 +134,6 @@ private fun ChoicePickerOf(
   // M3 kit `Chip` / Filter — `displayStyle: chips` draws each option as a `FilterChip`.
   reference = "figma:ocdacdEsnHipMJD3egzxKb/53923:28465",
   caption = "Pick from a list of options. Chips, allowing several selections.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable
@@ -170,7 +167,6 @@ fun ChoicePickerDropdownSticker() =
   // M3 kit `Slider` / Continuous. The catalog draws a Material `Slider` under its label.
   reference = "figma:ocdacdEsnHipMJD3egzxKb/58008:10357",
   caption = "A labelled value between `min` and `max`, bound to the data model.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable
@@ -211,7 +207,6 @@ private fun DateTimeOf(date: Boolean, time: Boolean, label: String) =
   // Material date and time picker dialogs open from it.
   reference = "figma:ocdacdEsnHipMJD3egzxKb/53923:28267",
   caption = "A date and time, shown as a chip that opens the Material pickers.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable
