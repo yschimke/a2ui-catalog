@@ -27,13 +27,25 @@ fun A2uiDocumentView(source: String, modifier: Modifier = Modifier) {
     val surface = remember(host, document) { host.show(document) }
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(12.dp)) {
       if (surface != null) A2uiSurface(surfaceModel = surface, transitionSpec = null)
-      if (document.errors.isNotEmpty()) {
+      // A document the parser accepts can still create nothing — a `createSurface` naming a catalog
+      // this client does not offer is rejected by the engine, not the parser. Say so rather than
+      // render a blank picture.
+      val errors =
+        if (surface == null && document.errors.isEmpty()) {
+          listOf(
+            "The engine created no surface `${document.surfaceId}`. Is its catalogId " +
+              "`${StickerCatalog.id}`?"
+          )
+        } else {
+          document.errors
+        }
+      if (errors.isNotEmpty()) {
         Surface(
           color = MaterialTheme.colorScheme.errorContainer,
           shape = MaterialTheme.shapes.medium,
         ) {
           Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            document.errors.forEach {
+            errors.forEach {
               Text(
                 it,
                 style = MaterialTheme.typography.bodySmall,

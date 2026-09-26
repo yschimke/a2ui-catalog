@@ -79,4 +79,37 @@ class A2uiDocumentTest {
       document.errors.toString(),
     )
   }
+
+  @Test
+  fun `a malformed first line does not lose the valid lines after it`() {
+    val document =
+      A2uiDocument.parse(
+        """
+        {"version":"v0.9","createSurface":
+        {"version":"v0.9","createSurface":{"surfaceId":"s","catalogId":"${StickerCatalog.id}"}}
+        {"version":"v0.9","updateComponents":{"surfaceId":"s","components":$card}}
+        """
+      )
+    assertEquals(2, document.messages.size)
+    assertTrue(document.errors.single().startsWith("message 1:"), document.errors.toString())
+    rendered(document)
+  }
+
+  @Test
+  fun `a surface on a catalog this client lacks creates nothing`() {
+    val document =
+      A2uiDocument.parse(
+        """
+        {"version":"v0.9","createSurface":{"surfaceId":"s","catalogId":"https://example.com/other"}}
+        {"version":"v0.9","updateComponents":{"surfaceId":"s","components":$card}}
+        """
+      )
+    assertEquals(emptyList(), document.errors)
+    val host = StickerHost(StickerCatalog)
+    try {
+      assertEquals(null, host.show(document))
+    } finally {
+      host.close()
+    }
+  }
 }

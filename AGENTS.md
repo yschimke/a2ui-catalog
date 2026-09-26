@@ -29,6 +29,13 @@ stand in for what A2UI "would" draw: the point of the sheet is that it moves whe
 If the library draws something wrong, the sticker shows it and [docs/FINDINGS.md](docs/FINDINGS.md)
 records it.
 
+**One exception, and only one:** `catalog/src/main/kotlin/ee/schimke/a2uicatalog/playground/` holds
+`A2uiDocumentPreview`, which draws whatever A2UI document its `document` knob holds. It lives in
+`:catalog` because the server live-renders a published catalog's bundle, and a second published
+system for one preview would cost a sheet, a publish job and a registry entry. It is not a
+`@CatalogComponent`, so the inventory is unaffected, and it still draws through the real Material
+catalog. No other non-sticker preview goes in `:catalog`.
+
 The root component's id is always `root`. Seed a bound value through `data` rather than leaving an
 input empty, unless emptiness is the cell.
 

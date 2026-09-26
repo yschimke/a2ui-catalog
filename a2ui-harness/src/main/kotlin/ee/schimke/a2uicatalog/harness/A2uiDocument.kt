@@ -66,7 +66,10 @@ private constructor(
         val array = JSONArray(source)
         return List(array.length()) { array.get(it).toString() }
       }
-      val first = JSONTokener(source).nextValue()
+      // Probe only for the shorthand. A first value that does not parse is not a document-level
+      // failure: in JSON Lines it is one bad message, reported per line below while the rest
+      // render.
+      val first = runCatching { JSONTokener(source).nextValue() }.getOrNull()
       if (first is JSONObject && !first.has("version") && first.has("components")) {
         return shorthand(first, catalogId)
       }
