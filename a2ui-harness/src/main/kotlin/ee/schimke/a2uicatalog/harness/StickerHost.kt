@@ -59,6 +59,16 @@ class StickerHost(val catalog: A2uiCatalog) : RememberObserver {
     return processor.activeSurfaces.value.firstOrNull { it.id == surfaceId }
   }
 
+  /**
+   * Applies [document]'s messages in order and returns the surface it creates, or null when it
+   * creates none (its errors say why).
+   */
+  fun show(document: A2uiDocument): A2uiSurfaceModel? {
+    document.messages.forEach(processor::processMessage)
+    val id = document.surfaceId ?: return null
+    return processor.activeSurfaces.value.firstOrNull { it.id == id }
+  }
+
   fun close() = scope.cancel()
 
   override fun onRemembered() {}

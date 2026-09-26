@@ -50,6 +50,9 @@ dependencies {
   implementation(libs.androidx.compose.ui.tooling.preview)
   implementation(libs.androidx.compose.ui.tooling)
   implementation(libs.composeai.preview.annotations)
+  // `previewOverrideString`, which backs the playground's `document` knob: the live lane renders a
+  // pasted A2UI document by overriding it. See sections/Playground.kt.
+  implementation(libs.composeai.preview.overrides)
   testImplementation(libs.robolectric)
   testImplementation(libs.kotlin.test.junit)
 }

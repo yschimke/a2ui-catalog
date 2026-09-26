@@ -47,6 +47,7 @@ robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectr
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 
 composeai-preview-annotations = { module = "ee.schimke.composeai:preview-annotations", version.ref = "composePreviewAnnotations" }
+composeai-preview-overrides = { module = "ee.schimke.composeai:data-preview-overrides-runtime", version.ref = "composePreviewAnnotations" }
 
 [plugins]
 android-library = { id = "com.android.library", version.ref = "agp" }
