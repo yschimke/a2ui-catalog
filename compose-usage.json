@@ -1,0 +1,4 @@
+{
+  "$comment": "Read by compose-preview-server's Source panel (UsageRules). `sourceRoots`: the vendored AndroidX samples keep their packages under samples-catalog's `src/main/kotlin/upstream`, where a sample preview's own package cannot point, so the panel's one-level follow of `ChoicePickerSample(…)` into its file looks there too. Module-relative; a root a module does not have is simply not found.",
+  "sourceRoots": ["src/main/kotlin/upstream"]
+}
