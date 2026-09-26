@@ -37,7 +37,6 @@ private fun ButtonOf(variant: String, label: String = "Confirm", child: String =
   // M3 kit `Button` / Filled — `variant: primary` is a filled `Button`.
   reference = "figma:ocdacdEsnHipMJD3egzxKb/57994:2324",
   caption = "Dispatches an action. `primary` is the filled button.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable

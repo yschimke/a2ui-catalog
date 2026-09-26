@@ -37,7 +37,6 @@ private fun ImageOf(variant: String, fit: String = "cover") =
   noReference = "The picture is the app's renderer; the kit publishes no image component.",
   caption =
     "An image at one of six catalog sizes. `mediumFeature` by default: 128dp, 12dp corners.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable
@@ -72,7 +71,6 @@ fun ImageHeaderSticker() = ImageOf("header")
   id = "Video",
   noReference = "The player is the app's renderer; the kit publishes no video component.",
   caption = "A video, shown at rest as its poster frame.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable
@@ -83,7 +81,6 @@ fun VideoSticker() =
   id = "AudioPlayer",
   noReference = "The player is the app's renderer; the kit publishes no audio component.",
   caption = "An audio track with its description, at rest.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable
