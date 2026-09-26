@@ -4,8 +4,8 @@ name: Publish A2UI CMP port
 # Maven repository served from the `a2ui-cmp-maven` branch of yschimke/a2ui-catalog-out, the public
 # output repository that already carries the design artifacts, so no generated branch lives in this
 # source repository. vendor/a2ui-upstream.json owns the immutable version,
-# `<release>-cmp<portRevision>`; a version that is already on the branch is never overwritten
-# unless a maintainer asks for it (`republish`), and then only when the bytes differ.
+# `<release>-cmp<portRevision>`; a version that is already on the branch is never rebuilt or
+# overwritten: changed bytes need a new `portRevision`.
 on:
   push:
     branches: [main]
@@ -19,11 +19,6 @@ on:
       - 'vendor/material3-a2ui/**'
       - '.github/workflows/publish-a2ui-cmp.yml'
   workflow_dispatch:
-    inputs:
-      republish:
-        description: 'Overwrite the Maven-branch version (only use for identical or broken bytes)'
-        type: boolean
-        default: false
 
 concurrency:
   group: publish-a2ui-cmp
@@ -76,7 +71,7 @@ jobs:
           fi
 
       - name: Already published
-        if: steps.state.outputs.published == 'true' && !inputs.republish
+        if: steps.state.outputs.published == 'true'
         run: |
           {
             echo "### ${{ steps.state.outputs.version }} is already published"
@@ -86,11 +81,11 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Build Maven repository
-        if: steps.state.outputs.published == 'false' || inputs.republish
+        if: steps.state.outputs.published == 'false'
         run: ./gradlew --stacktrace publishA2uiCmpToBuildDir
 
       - name: Push Maven repository
-        if: steps.state.outputs.published == 'false' || inputs.republish
+        if: steps.state.outputs.published == 'false'
         shell: bash
         run: |
           set -euo pipefail

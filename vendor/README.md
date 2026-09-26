@@ -56,7 +56,7 @@ edit is one import line:
 | `Locale` (`expect`) | `java.util.Locale` | `actual typealias` to it: the JVM API is binary-identical to the AARs' | `Locale(languageTag)`, default `en-US` |
 | `Locales.US` / `getDefault()` / `forLanguageTag()` | the `Locale` statics | `java.util.Locale` | `en-US` |
 | `Date`, `TimeZone`, `DateFormat`, `SimpleDateFormat`, `ParseException`, `Calendar` | `java.util` / `java.text` | wrap the real `java.text` / `java.util` classes | a small en-US, UTC, Gregorian implementation (`WasmTime.kt`) |
-| `NumberFormat`, `Currency` | `java.text` / `java.util` | wrap the real classes | en-US grouping, half-even rounding, `$ € £ ¥` symbols |
+| `NumberFormat`, `Currency` | `java.text` / `java.util` | wrap the real classes | en-US grouping, half-even rounding, `$ € £ ¥` symbols; the JDK 17 ISO 4217 code list, so an unknown code fails as on the JVM |
 | `ConcurrentHashMap`, `AtomicInteger`, `ReentrantLock` + `withLock` | `java.util.concurrent`, `kotlin.concurrent.withLock` | the real classes (`typealias` / delegate) | plain, single-threaded |
 | `System.currentTimeMillis` / `identityHashCode`, `Character.*` | `java.lang` | `java.lang` | `Date.now()`, `hashCode()`, Kotlin char categories |
 | `putIfAbsent` | `java.util.Map.putIfAbsent` | the JDK member wins over the extension | extension |
