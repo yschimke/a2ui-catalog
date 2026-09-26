@@ -10,7 +10,7 @@
   "previewSurfaces": {
     "wasm": {
       "fidelity": "approximate",
-      "reason": "The builder's Wasm canvas cannot link `material3-a2ui`, which is published only as an Android AAR, so every component draws as a named placeholder that shows the tree an agent would send."
+      "reason": "The builder's Wasm canvas cannot link `material3-a2ui`, which is published only as an Android AAR. This catalog's renderer runtime (a2ui-ui-builder-renderer) draws the design through this repository's Compose Multiplatform port of the same release instead: the same library source, not the AAR the stickers are rendered with. Where that runtime is not published, every component draws as a named placeholder."
     },
     "native": {
       "fidelity": "authoritative",

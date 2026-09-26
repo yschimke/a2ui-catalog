@@ -63,3 +63,26 @@ include(":vendor:material3-a2ui")
 // The proof the port renders without Robolectric: a Compose Desktop `ImageComposeScene` draws a
 // real A2UI payload through the vendored Material catalog. Not published. See a2ui-desktop/.
 include(":a2ui-desktop")
+
+// The catalog-owned UI-builder renderer: the ui-builder canvas draws an A2UI design through the
+// vendored CMP port inside a sandboxed iframe, instead of as labelled placeholders. It links the
+// renderer SDK from a compose-ui-builder checkout, which is intentionally absent from Maven, so it
+// exists only when that checkout is named:
+//
+//   ./gradlew :a2ui-ui-builder-renderer:rendererArchive -PcomposeUiBuilderDir=../compose-ui-builder
+//
+// Asking for the renderer without the checkout fails closed rather than compiling against some
+// other release. See a2ui-ui-builder-renderer/build.gradle.kts.
+providers.gradleProperty("composeUiBuilderDir").orNull?.let { path ->
+  val directory = file(path).canonicalFile
+  require(directory.resolve("settings.gradle.kts").isFile) {
+    "-PcomposeUiBuilderDir names $directory, which is not a compose-ui-builder Gradle checkout."
+  }
+  includeBuild(directory) {
+    dependencySubstitution {
+      substitute(module("ee.schimke.composeai:ui-builder-renderer-sdk-source"))
+        .using(project(":ui-builder-renderer-sdk"))
+    }
+  }
+  include(":a2ui-ui-builder-renderer")
+}

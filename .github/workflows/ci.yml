@@ -139,6 +139,33 @@ jobs:
             build/a2ui-cmp-maven/
           if-no-files-found: warn
 
+  # The UI-builder renderer runtime (a2ui-ui-builder-renderer/): built against the exact
+  # compose-ui-builder commit the Design Artifacts workflow publishes it with, verified, and
+  # formatted. `ktfmtCheck` below never sees it, because the module only exists in that composite.
+  ui-builder-renderer:
+    name: UI-builder renderer runtime
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - name: Check out the pinned compose-ui-builder
+        run: |
+          set -euo pipefail
+          ref="$(tr -d '[:space:]' < a2ui-ui-builder-renderer/compose-ui-builder.ref)"
+          git init --quiet "$RUNNER_TEMP/compose-ui-builder"
+          git -C "$RUNNER_TEMP/compose-ui-builder" remote add origin https://github.com/yschimke/compose-ui-builder.git
+          git -C "$RUNNER_TEMP/compose-ui-builder" fetch --quiet --depth=1 origin "$ref"
+          git -C "$RUNNER_TEMP/compose-ui-builder" checkout --quiet --detach FETCH_HEAD
+      - uses: ./.github/actions/setup
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
+      - name: Build and verify the renderer archive
+        run: >-
+          ./gradlew --stacktrace
+          -PcomposeUiBuilderDir=${{ runner.temp }}/compose-ui-builder
+          :a2ui-ui-builder-renderer:ktfmtCheck
+          :a2ui-ui-builder-renderer:verifyRendererRuntime
+
   ktfmt:
     name: ktfmtCheck
     runs-on: ubuntu-latest
