@@ -18,6 +18,8 @@ on:
       - 'catalog.spec.json'
       - 'ui-builder.policy.json'
       - 'samples-catalog/**'
+      - 'a2ui-ui-builder-renderer/**'
+      - 'vendor/**'
       - 'gradle/**'
       - 'build.gradle.kts'
       - 'settings.gradle.kts'
@@ -34,8 +36,25 @@ permissions:
   contents: read
 
 jobs:
+  # The compose-ui-builder commit the renderer runtime links, read from the one file CI builds it
+  # against too: a reusable workflow's `with:` cannot read the checkout itself.
+  renderer-pin:
+    name: renderer pin
+    if: ${{ github.repository == 'yschimke/a2ui-catalog' }}
+    runs-on: ubuntu-latest
+    outputs:
+      ref: ${{ steps.pin.outputs.ref }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          sparse-checkout: a2ui-ui-builder-renderer/compose-ui-builder.ref
+          sparse-checkout-cone-mode: false
+      - id: pin
+        run: echo "ref=$(tr -d '[:space:]' < a2ui-ui-builder-renderer/compose-ui-builder.ref)" >> "$GITHUB_OUTPUT"
+
   a2ui-catalog:
     name: a2ui-catalog
+    needs: renderer-pin
     if: ${{ github.repository == 'yschimke/a2ui-catalog' }}
     permissions:
       contents: write
@@ -63,6 +82,12 @@ jobs:
       render-timeout: 1800
       render-shards: 1
       allow-incomplete: ${{ github.event_name == 'workflow_dispatch' && inputs.allow_incomplete }}
+      # The UI-builder canvas's renderer for this catalog (a2ui-ui-builder-renderer/): the design
+      # drawn through the vendored CMP port instead of as labelled placeholders. Published beside
+      # catalog.json, which names its runtime id; the editor loads it in a sandboxed frame.
+      ui-builder-runtime-task: ':a2ui-ui-builder-renderer:rendererArchive'
+      ui-builder-runtime-archive: 'a2ui-ui-builder-renderer/build/distributions/a2ui-ui-builder-renderer.zip'
+      ui-builder-runtime-source-ref: ${{ needs.renderer-pin.outputs.ref }}
     secrets:
       artifacts_token: ${{ secrets.ARTIFACTS_TOKEN }}
       figma_token: ${{ secrets.FIGMA_TOKEN }}

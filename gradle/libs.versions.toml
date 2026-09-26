@@ -68,6 +68,8 @@ cmp-ui-test = { module = "org.jetbrains.compose.ui:ui-test", version.ref = "comp
 androidx-collection = { module = "androidx.collection:collection", version.ref = "androidx-collection" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "androidx-annotation" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+# Substituted by the compose-ui-builder checkout named with -PcomposeUiBuilderDir; never on Maven.
+composeai-ui-builder-renderer-sdk-source = { module = "ee.schimke.composeai:ui-builder-renderer-sdk-source", version = "source" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 

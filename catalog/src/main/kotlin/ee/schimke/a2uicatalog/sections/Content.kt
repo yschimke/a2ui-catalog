@@ -26,7 +26,6 @@ private fun TextOf(variant: String, text: String) =
     "The M3 kit publishes type STYLES, not a Text component; the roles each variant maps to are " +
       "the Material type scale.",
   caption = "A run of text in one of seven roles. `body` by default.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable
@@ -71,7 +70,6 @@ private fun IconOf(name: Any) = A2uiSticker(listOf(component("root", "Icon", "na
     "The glyph set is the catalog's own (`material3-a2ui` bundles its 60 icons); the M3 kit's " +
       "Icons page is a glyph library, not a component to compare against.",
   caption = "One of the catalog's named glyphs.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable
@@ -97,7 +95,6 @@ fun IconSvgPathSticker() =
   // M3 kit `Divider` / Horizontal — the catalog draws a `HorizontalDivider` at its defaults.
   reference = "figma:ocdacdEsnHipMJD3egzxKb/51816:5860",
   caption = "A hairline between groups of content.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable

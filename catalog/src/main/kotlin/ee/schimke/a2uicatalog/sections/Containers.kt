@@ -21,7 +21,6 @@ import ee.schimke.composeai.preview.CatalogGroup
   reference = "figma:ocdacdEsnHipMJD3egzxKb/52346:27574",
   caption =
     "A container for one child, here the kit card's full set of slots. Drawn as an outlined card.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable
@@ -103,7 +102,6 @@ fun CardSticker() =
   // M3 kit `Tabs` / Primary — the Material catalog draws a `PrimaryTabRow`.
   reference = "figma:ocdacdEsnHipMJD3egzxKb/54563:40116",
   caption = "Titled tabs over one child each. The first tab is selected.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable
@@ -133,7 +131,6 @@ fun TabsSticker() =
     "At rest a Modal draws only its trigger; the dialog it opens (a BasicAlertDialog) is not " +
       "shown until the trigger is pressed, so there is no resting picture to compare to the kit.",
   caption = "A trigger that opens its content in a dialog.",
-  related = ["a2ui-samples"],
 )
 @Preview
 @Composable

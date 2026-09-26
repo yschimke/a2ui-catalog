@@ -9,6 +9,7 @@
   "module": ":samples-catalog",
   "modes": ["light"],
   "display": {
+    "role": "samples",
     "hero": "Button"
   }
 }

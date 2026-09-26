@@ -102,6 +102,22 @@ It publishes as `ee.schimke.a2uicmp:*:1.0.0-alpha01-cmp01` to the `a2ui-cmp-mave
 genuine AndroidX library draws, so they stay on the AARs until a desktop lane can be compared
 against them.
 
+## The UI-builder renderer runtime
+
+[`a2ui-ui-builder-renderer/`](a2ui-ui-builder-renderer) is what the ui-builder's canvas draws an
+A2UI design with. The editor cannot link the `material3-a2ui` AAR, so it loads this catalog's own
+renderer, a Wasm page in an `<iframe sandbox="allow-scripts">` speaking the renderer SDK's
+postMessage protocol. That page lowers the design with compose-ui-builder's `A2uiDocumentExporter`
+(the same lowering the JSON export uses), applies the messages to the CMP port's engine, and draws
+them with its Material 3 basic catalog. It reports every component's bounds so selection works.
+
+![The renderer runtime drawing an A2UI design, with each node's reported bounds outlined](docs/evidence/ui-builder-runtime.png)
+
+It links the renderer SDK from a compose-ui-builder checkout, pinned by commit in
+[`compose-ui-builder.ref`](a2ui-ui-builder-renderer/compose-ui-builder.ref), so the module exists
+only when that checkout is named. The Design Artifacts workflow builds the ZIP and publishes it
+beside `catalog.json` on `design-artifacts/a2ui-catalog`.
+
 ## Building
 
 ```
@@ -112,6 +128,8 @@ node scripts/import-samples.mjs --check                         # vendored sampl
 node scripts/ui-builder-policy.mjs --check                      # policy matches the schema
 scripts/agent-gradle.sh :a2ui-desktop:test                      # the CMP port renders on desktop
 scripts/agent-gradle.sh publishA2uiCmpToBuildDir                # the port's Maven tree
+scripts/agent-gradle.sh :a2ui-ui-builder-renderer:verifyRendererRuntime \
+  -PcomposeUiBuilderDir=../compose-ui-builder                   # the UI-builder renderer ZIP
 ```
 
 Needs an Android SDK with `platforms;android-37.1`.
