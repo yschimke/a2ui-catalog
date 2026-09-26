@@ -37,6 +37,7 @@ import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.doubleOrNull
 import kotlinx.serialization.json.longOrNull
 import kotlinx.serialization.json.put
+import ee.schimke.a2uicmp.port.putIfAbsent
 
 /**
  * Serializes an [A2uiCoreCatalog] into JSON Schema representations.

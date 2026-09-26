@@ -24,6 +24,7 @@ import androidx.a2ui.model.schema.A2uiArraySchema
 import androidx.a2ui.model.schema.A2uiObjectSchema
 import androidx.a2ui.model.schema.A2uiSchema
 import androidx.a2ui.model.schema.commontypes.A2uiDynamicBooleanSchema
+import kotlin.jvm.JvmField
 
 /**
  * Evaluates a list of boolean values using logical OR.

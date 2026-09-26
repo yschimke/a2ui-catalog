@@ -24,6 +24,7 @@ import androidx.a2ui.model.schema.A2uiSchema
 import androidx.a2ui.model.schema.A2uiSchemaKeyword
 import androidx.a2ui.model.schema.A2uiStringSchema
 import androidx.a2ui.model.schema.commontypes.internal.SCHEMA_ID_COMMON_TYPES
+import kotlin.jvm.JvmField
 
 /**
  * Configures client function invocations.

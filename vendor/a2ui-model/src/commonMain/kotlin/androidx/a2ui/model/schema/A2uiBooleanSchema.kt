@@ -20,6 +20,8 @@ import androidx.a2ui.model.schema.internal.putCommonKeywords
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
+import kotlin.jvm.JvmField
+import kotlin.jvm.JvmOverloads
 
 /**
  * Schema representing a boolean literal.

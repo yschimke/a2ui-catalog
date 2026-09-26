@@ -27,7 +27,9 @@ import androidx.a2ui.model.protocol.A2uiExecutionContext
 import androidx.a2ui.model.schema.A2uiObjectSchema
 import androidx.a2ui.model.schema.A2uiSchema
 import androidx.a2ui.model.schema.commontypes.A2uiDynamicStringSchema
-import java.util.concurrent.ConcurrentHashMap
+import ee.schimke.a2uicmp.port.Character
+import ee.schimke.a2uicmp.port.ConcurrentHashMap
+import kotlin.jvm.JvmField
 
 /**
  * Performs string interpolation of data model values and other functions.

@@ -20,6 +20,7 @@ import androidx.collection.MutableScatterMap
 import androidx.collection.ScatterMap
 import androidx.collection.emptyScatterMap
 import androidx.compose.runtime.Immutable
+import kotlin.jvm.JvmOverloads
 
 /**
  * An immutable, indexed collection of [A2uiComponent]s registered within an [A2uiCatalog].

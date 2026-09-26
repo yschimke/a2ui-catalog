@@ -24,7 +24,9 @@ import androidx.a2ui.model.schema.A2uiObjectSchema
 import androidx.a2ui.model.schema.A2uiSchema
 import androidx.a2ui.model.schema.commontypes.A2uiDynamicBooleanSchema
 import androidx.a2ui.model.schema.commontypes.A2uiDynamicNumberSchema
-import java.text.NumberFormat
+import ee.schimke.a2uicmp.port.NumberFormat
+import kotlin.jvm.JvmField
+import kotlin.jvm.JvmOverloads
 
 /**
  * Formats a number with grouping and decimal precision.

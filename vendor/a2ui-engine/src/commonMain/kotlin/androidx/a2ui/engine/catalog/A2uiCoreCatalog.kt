@@ -21,6 +21,7 @@ package androidx.a2ui.engine.catalog
 import androidx.a2ui.model.catalog.A2uiFunctionCollection
 import androidx.a2ui.model.protocol.A2uiInlineCatalog
 import androidx.a2ui.model.schema.A2uiSchema
+import kotlin.jvm.JvmName
 
 /** A registry of UI components and functions that a client surface can render. */
 public interface A2uiCoreCatalog {

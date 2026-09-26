@@ -17,6 +17,7 @@
 package androidx.a2ui.compose.runtime
 
 import androidx.compose.runtime.Immutable
+import ee.schimke.a2uicmp.port.System
 
 /**
  * An immutable wrapper around the raw component property map supplied by the A2UI protocol.
@@ -49,8 +50,8 @@ public class A2uiComponentProperties internal constructor(internal val raw: Map<
         return property.safeCast(value)
             ?: throw IllegalStateException(
                 "Type mismatch for static property '${property.key}'. " +
-                    "Expected a value compatible with ${property.javaClass.simpleName}, " +
-                    "but received ${value.javaClass.simpleName}. "
+                    "Expected a value compatible with ${property::class.simpleName}, " +  // CMP-PORT: KClass; `javaClass` is JVM-only
+                    "but received ${value::class.simpleName}. "  // CMP-PORT: KClass; `javaClass` is JVM-only
             )
     }
 

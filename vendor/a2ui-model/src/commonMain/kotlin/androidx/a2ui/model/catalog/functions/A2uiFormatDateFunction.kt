@@ -25,10 +25,13 @@ import androidx.a2ui.model.schema.A2uiObjectSchema
 import androidx.a2ui.model.schema.A2uiSchema
 import androidx.a2ui.model.schema.commontypes.A2uiDynamicStringSchema
 import androidx.a2ui.model.schema.commontypes.A2uiDynamicValueSchema
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
-import java.util.TimeZone
+import ee.schimke.a2uicmp.port.SimpleDateFormat
+import ee.schimke.a2uicmp.port.Date
+import ee.schimke.a2uicmp.port.Locale
+import ee.schimke.a2uicmp.port.Locales
+import ee.schimke.a2uicmp.port.TimeZone
+import kotlin.jvm.JvmField
+import kotlin.jvm.JvmOverloads
 
 /**
  * Formats a timestamp into a date string.
@@ -103,7 +106,7 @@ public constructor(private val localeProvider: A2uiLocaleProvider = A2uiLocalePr
 
         return if (format == FORMAT_ISO) {
             val sdf =
-                SimpleDateFormat(ISO_FORMAT_PATTERN, Locale.US).apply {
+                SimpleDateFormat(ISO_FORMAT_PATTERN, Locales.US).apply {  // CMP-PORT: `Locale.US` / `getDefault()` are Java statics
                     timeZone = utcZone
                 }
             sdf.format(date)

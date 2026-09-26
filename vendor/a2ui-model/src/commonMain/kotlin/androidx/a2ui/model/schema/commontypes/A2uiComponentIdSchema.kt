@@ -20,6 +20,7 @@ import androidx.a2ui.model.schema.A2uiCompositeSchema
 import androidx.a2ui.model.schema.A2uiSchema
 import androidx.a2ui.model.schema.A2uiStringSchema
 import androidx.a2ui.model.schema.commontypes.internal.SCHEMA_ID_COMMON_TYPES
+import kotlin.jvm.JvmField
 
 /**
  * Represents unique identifiers for components within a surface.

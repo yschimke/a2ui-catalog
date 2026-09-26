@@ -25,6 +25,7 @@ import androidx.a2ui.model.schema.A2uiRefSchema
 import androidx.a2ui.model.schema.A2uiSchema
 import androidx.a2ui.model.schema.A2uiSchemaKeyword
 import androidx.a2ui.model.schema.A2uiStringSchema
+import kotlin.jvm.JvmName
 
 /**
  * Converts a component definition into an [A2uiSchema].
@@ -83,7 +84,7 @@ internal fun serializeComponentDefinitionToSchema(
             injectComponentMetadataIntoProperties(rawSchema, componentName, description)
         else ->
             throw IllegalArgumentException(
-                "Unexpected schema type '${rawSchema::class.java.simpleName}'. " +
+                "Unexpected schema type '${rawSchema::class.simpleName}'. " +  // CMP-PORT: KClass; `javaClass` is JVM-only
                     "Top-level component schema must be A2uiObjectSchema, A2uiCompositeSchema, or a schema with AllOf, OneOf, or AnyOf keyword."
             )
     }
@@ -112,7 +113,7 @@ private fun wrapWithAllOfDiscriminator(
             is A2uiAnySchema -> schema.copy(description = null)
             else ->
                 throw IllegalArgumentException(
-                    "Unexpected schema type '${schema::class.java.simpleName}' in wrapWithAllOfDiscriminator."
+                    "Unexpected schema type '${schema::class.simpleName}' in wrapWithAllOfDiscriminator."  // CMP-PORT: KClass; `javaClass` is JVM-only
                 )
         }
     return A2uiObjectSchema(
@@ -289,7 +290,7 @@ private fun injectComponentMetadataIntoAllOf(
         is A2uiAnySchema -> schema.copy(description = targetDescription, keywords = updatedKeywords)
         else ->
             throw IllegalArgumentException(
-                "Unexpected schema type '${schema::class.java.simpleName}' in injectComponentMetadataIntoAllOf."
+                "Unexpected schema type '${schema::class.simpleName}' in injectComponentMetadataIntoAllOf."  // CMP-PORT: KClass; `javaClass` is JVM-only
             )
     }
 }

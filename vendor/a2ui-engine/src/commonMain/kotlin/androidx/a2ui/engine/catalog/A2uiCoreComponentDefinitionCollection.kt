@@ -21,6 +21,8 @@ package androidx.a2ui.engine.catalog
 import androidx.collection.MutableScatterMap
 import androidx.collection.ScatterMap
 import androidx.collection.emptyScatterMap
+import kotlin.jvm.JvmName
+import kotlin.jvm.JvmOverloads
 
 /**
  * An immutable, indexed collection of [A2uiCoreComponentDefinition]s registered within an

@@ -32,7 +32,7 @@ import androidx.a2ui.model.protocol.A2uiClientErrorMessage
 import androidx.a2ui.model.protocol.A2uiClientToServerMessage
 import androidx.a2ui.model.protocol.A2uiInlineCatalog
 import androidx.a2ui.model.protocol.A2uiServerToClientMessage
-import java.util.concurrent.ConcurrentHashMap
+import ee.schimke.a2uicmp.port.ConcurrentHashMap
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel

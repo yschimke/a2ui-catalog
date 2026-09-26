@@ -26,8 +26,10 @@ import androidx.a2ui.model.schema.A2uiSchema
 import androidx.a2ui.model.schema.commontypes.A2uiDynamicBooleanSchema
 import androidx.a2ui.model.schema.commontypes.A2uiDynamicNumberSchema
 import androidx.a2ui.model.schema.commontypes.A2uiDynamicStringSchema
-import java.text.NumberFormat
-import java.util.Currency
+import ee.schimke.a2uicmp.port.NumberFormat
+import ee.schimke.a2uicmp.port.Currency
+import kotlin.jvm.JvmField
+import kotlin.jvm.JvmOverloads
 
 /**
  * Formats a number as a currency string.

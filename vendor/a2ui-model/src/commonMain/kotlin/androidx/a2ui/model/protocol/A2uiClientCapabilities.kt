@@ -16,6 +16,8 @@
 
 package androidx.a2ui.model.protocol
 
+import kotlin.jvm.JvmOverloads
+
 /**
  * Represents the client capabilities advertisement sent to the agent during system initialization.
  *

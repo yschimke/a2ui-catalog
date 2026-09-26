@@ -38,7 +38,8 @@ import androidx.collection.FloatList
 import androidx.collection.IntList
 import androidx.collection.LongList
 import androidx.compose.runtime.Immutable
-import java.lang.StringBuilder
+import kotlin.text.StringBuilder
+import ee.schimke.a2uicmp.port.Character
 
 /**
  * A typed declaration of a property expected by an A2UI component.

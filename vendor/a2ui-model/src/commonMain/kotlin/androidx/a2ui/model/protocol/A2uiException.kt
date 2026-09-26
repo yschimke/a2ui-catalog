@@ -37,12 +37,12 @@ private constructor(
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is A2uiException) return false
-        if (this.javaClass != other.javaClass) return false
+        if (this::class != other::class) return false  // CMP-PORT: KClass; `javaClass` is JVM-only
         return (code == other.code) && (context == other.context) && (message == other.message)
     }
 
     override fun hashCode(): Int {
-        var result = this.javaClass.hashCode()
+        var result = this::class.hashCode()  // CMP-PORT: KClass; `javaClass` is JVM-only
         result = (31 * result) + code.hashCode()
         result = (31 * result) + context.hashCode()
         result = (31 * result) + (message?.hashCode() ?: 0)
@@ -52,7 +52,7 @@ private constructor(
     override fun toString(): String {
         val fields =
             listOf("code=$code", "message=$message") + context.map { "${it.key}=${it.value}" }
-        return "${javaClass.simpleName}(${fields.joinToString()})"
+        return "${this::class.simpleName}(${fields.joinToString()})"  // CMP-PORT: KClass; `javaClass` is JVM-only
     }
 
     /**

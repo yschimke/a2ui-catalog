@@ -16,10 +16,11 @@
 
 package androidx.a2ui.model.protocol
 
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
-import java.util.TimeZone
+import ee.schimke.a2uicmp.port.SimpleDateFormat
+import ee.schimke.a2uicmp.port.Date
+import ee.schimke.a2uicmp.port.Locale
+import ee.schimke.a2uicmp.port.Locales
+import ee.schimke.a2uicmp.port.TimeZone
 
 /** The unified interface for all messages sent from the A2UI client to the A2A server. */
 public sealed interface A2uiClientToServerMessage
@@ -74,7 +75,7 @@ public class A2uiClientEventMessage(
 
     private companion object {
         private val dateFormat =
-            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US).apply {
+            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locales.US).apply {  // CMP-PORT: `Locale.US` / `getDefault()` are Java statics
                 timeZone = TimeZone.getTimeZone("UTC")
             }
     }

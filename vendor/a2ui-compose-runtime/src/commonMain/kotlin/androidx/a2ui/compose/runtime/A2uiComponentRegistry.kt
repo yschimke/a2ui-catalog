@@ -26,8 +26,8 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.snapshots.Snapshot
-import java.util.concurrent.locks.ReentrantLock
-import kotlin.concurrent.withLock
+import ee.schimke.a2uicmp.port.ReentrantLock
+import ee.schimke.a2uicmp.port.withLock
 
 /**
  * An implementation of [A2uiCoreComponentRegistry] for the Jetpack Compose A2UI renderer.

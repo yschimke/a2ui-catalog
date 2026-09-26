@@ -19,6 +19,8 @@ package androidx.a2ui.model.schema
 import androidx.a2ui.model.schema.internal.putCommonKeywords
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.buildJsonObject
+import kotlin.jvm.JvmField
+import kotlin.jvm.JvmOverloads
 
 /**
  * Schema representing an unstructured JSON payload or a keyword-only schema.

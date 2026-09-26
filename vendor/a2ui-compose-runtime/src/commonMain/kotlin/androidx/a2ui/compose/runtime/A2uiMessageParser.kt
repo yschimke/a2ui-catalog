@@ -16,13 +16,13 @@
 
 package androidx.a2ui.compose.runtime
 
-import android.util.JsonReader
-import android.util.JsonToken
+import ee.schimke.a2uicmp.port.JsonReader
+import ee.schimke.a2uicmp.port.JsonToken
 import androidx.a2ui.model.processor.A2uiJsonMessageParser
 import androidx.a2ui.model.processor.A2uiJsonReader
 import androidx.a2ui.model.processor.A2uiJsonToken
 import androidx.a2ui.model.processor.A2uiMessageParser
-import java.io.StringReader
+import ee.schimke.a2uicmp.port.StringReader
 
 /**
  * Creates an [androidx.a2ui.model.processor.A2uiMessageParser] configured to parse String-based

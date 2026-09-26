@@ -25,6 +25,7 @@ import androidx.a2ui.model.protocol.A2uiProtocolConstants
 import androidx.a2ui.model.protocol.A2uiServerToClientMessage
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
+import kotlin.jvm.JvmName
 
 /**
  * The A2UI message processor.

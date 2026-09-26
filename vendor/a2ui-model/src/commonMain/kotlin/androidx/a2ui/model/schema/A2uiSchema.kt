@@ -44,14 +44,14 @@ public sealed class A2uiSchema {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (javaClass != other?.javaClass) return false
+        if (this::class != other?.let { it::class }) return false  // CMP-PORT: KClass; `javaClass` is JVM-only
 
         other as A2uiSchema
         return description == other.description && keywords == other.keywords
     }
 
     override fun hashCode(): Int {
-        var result = javaClass.hashCode()
+        var result = this::class.hashCode()  // CMP-PORT: KClass; `javaClass` is JVM-only
         result = 31 * result + (description?.hashCode() ?: 0)
         result = 31 * result + keywords.hashCode()
         return result

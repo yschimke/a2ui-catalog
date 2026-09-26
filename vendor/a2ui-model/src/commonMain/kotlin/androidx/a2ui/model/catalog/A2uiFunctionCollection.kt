@@ -21,6 +21,8 @@ package androidx.a2ui.model.catalog
 import androidx.collection.MutableScatterMap
 import androidx.collection.ScatterMap
 import androidx.collection.emptyScatterMap
+import kotlin.jvm.JvmName
+import kotlin.jvm.JvmOverloads
 
 /**
  * An immutable, indexed collection of [A2uiFunction]s.

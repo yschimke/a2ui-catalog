@@ -23,6 +23,7 @@ import androidx.a2ui.model.protocol.A2uiExecutionContext
 import androidx.a2ui.model.schema.A2uiObjectSchema
 import androidx.a2ui.model.schema.A2uiSchema
 import androidx.a2ui.model.schema.commontypes.A2uiDynamicBooleanSchema
+import kotlin.jvm.JvmField
 
 /**
  * Negates a boolean value.

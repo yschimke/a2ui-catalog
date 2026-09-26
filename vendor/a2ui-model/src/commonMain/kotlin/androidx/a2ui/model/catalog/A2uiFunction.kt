@@ -19,6 +19,7 @@
 package androidx.a2ui.model.catalog
 
 import androidx.a2ui.model.protocol.A2uiExecutionContext
+import kotlin.jvm.JvmName
 
 /** Represents a function supported by A2UI including its definition and implementation. */
 public interface A2uiFunction {

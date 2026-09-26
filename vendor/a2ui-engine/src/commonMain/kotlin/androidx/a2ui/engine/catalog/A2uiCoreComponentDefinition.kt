@@ -19,6 +19,7 @@
 package androidx.a2ui.engine.catalog
 
 import androidx.a2ui.model.schema.A2uiSchema
+import kotlin.jvm.JvmName
 
 /** Defines a single UI component and its schema. */
 public interface A2uiCoreComponentDefinition {

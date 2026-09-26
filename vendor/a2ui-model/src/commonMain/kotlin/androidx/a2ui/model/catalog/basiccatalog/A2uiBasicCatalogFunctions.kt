@@ -36,6 +36,8 @@ import androidx.a2ui.model.catalog.functions.A2uiPluralizeFunction
 import androidx.a2ui.model.catalog.functions.A2uiRegexFunction
 import androidx.a2ui.model.catalog.functions.A2uiRequiredFunction
 import androidx.a2ui.model.catalog.functions.A2uiUrlOpener
+import kotlin.jvm.JvmName
+import kotlin.jvm.JvmOverloads
 
 /**
  * Creates and returns a list containing all the basic catalog [A2uiFunction]s.

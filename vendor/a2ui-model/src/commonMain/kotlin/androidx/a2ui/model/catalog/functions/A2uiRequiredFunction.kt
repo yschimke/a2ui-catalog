@@ -23,6 +23,7 @@ import androidx.a2ui.model.protocol.A2uiExecutionContext
 import androidx.a2ui.model.schema.A2uiAnySchema
 import androidx.a2ui.model.schema.A2uiObjectSchema
 import androidx.a2ui.model.schema.A2uiSchema
+import kotlin.jvm.JvmField
 
 /**
  * Validates that a value is present and not empty.

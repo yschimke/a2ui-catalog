@@ -48,11 +48,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.util.fastAll
 import androidx.compose.ui.util.fastFirstOrNull
 import androidx.compose.ui.util.fastMap
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
-import java.util.TimeZone
+import ee.schimke.a2uicmp.port.ParseException
+import ee.schimke.a2uicmp.port.SimpleDateFormat
+import ee.schimke.a2uicmp.port.Date
+import ee.schimke.a2uicmp.port.Locale
+import ee.schimke.a2uicmp.port.Locales
+import ee.schimke.a2uicmp.port.TimeZone
 
 /**
  * Defines the API contract and schemas for the A2UI Basic Catalog V1 following the specification in
@@ -3160,7 +3161,7 @@ internal fun parseIsoDateTimeToUtcMillis(value: String?): Long? {
     for (pattern in dateTimePatterns) {
         try {
             val parser =
-                SimpleDateFormat(pattern, Locale.US).apply {
+                SimpleDateFormat(pattern, Locales.US).apply {  // CMP-PORT: `Locale.US` / `getDefault()` are Java statics
                     timeZone = utcZone
                     isLenient = false
                 }
@@ -3187,6 +3188,6 @@ internal fun formatUtcMillisToIso(
             !enableDate && enableTime -> "HH:mm:ss"
             else -> "yyyy-MM-dd'T'HH:mm:ss'Z'"
         }
-    val formatter = SimpleDateFormat(pattern, Locale.US).apply { timeZone = utcZone }
+    val formatter = SimpleDateFormat(pattern, Locales.US).apply { timeZone = utcZone }  // CMP-PORT: `Locale.US` / `getDefault()` are Java statics
     return formatter.format(date)
 }

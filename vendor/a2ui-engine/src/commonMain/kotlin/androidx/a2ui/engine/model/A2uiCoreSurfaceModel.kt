@@ -31,7 +31,10 @@ import androidx.a2ui.model.protocol.A2uiComponentPayload
 import androidx.a2ui.model.protocol.A2uiDataPath
 import androidx.a2ui.model.protocol.A2uiException
 import androidx.a2ui.model.protocol.A2uiUserAction
-import java.util.concurrent.ConcurrentHashMap
+import ee.schimke.a2uicmp.port.ConcurrentHashMap
+import ee.schimke.a2uicmp.port.System
+import kotlin.jvm.JvmOverloads
+import kotlin.jvm.JvmName
 
 /**
  * The root domain model for a single active surface.

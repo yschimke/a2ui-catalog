@@ -17,10 +17,12 @@
 package androidx.a2ui.model.catalog.functions
 
 import androidx.a2ui.model.protocol.A2uiException
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.util.Locale
-import java.util.TimeZone
+import ee.schimke.a2uicmp.port.ParseException
+import ee.schimke.a2uicmp.port.SimpleDateFormat
+import ee.schimke.a2uicmp.port.Locale
+import ee.schimke.a2uicmp.port.Locales
+import ee.schimke.a2uicmp.port.TimeZone
+import kotlin.jvm.JvmOverloads
 
 /** Reusable utility methods to parse and validate dynamic arguments passed to catalog functions. */
 public object A2uiFunctionArgParser {
@@ -271,7 +273,7 @@ public object A2uiFunctionArgParser {
             for (pattern in ISO_PATTERNS) {
                 try {
                     val parser =
-                        SimpleDateFormat(pattern, Locale.US).apply {
+                        SimpleDateFormat(pattern, Locales.US).apply {  // CMP-PORT: `Locale.US` / `getDefault()` are Java statics
                             timeZone = utcZone
                             isLenient = false
                         }

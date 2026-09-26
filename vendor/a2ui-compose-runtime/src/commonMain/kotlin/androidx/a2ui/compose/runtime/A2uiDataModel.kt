@@ -28,8 +28,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.Snapshot
 import androidx.compose.runtime.snapshots.SnapshotStateMap
-import java.util.concurrent.locks.ReentrantLock
-import kotlin.concurrent.withLock
+import ee.schimke.a2uicmp.port.ReentrantLock
+import ee.schimke.a2uicmp.port.withLock
 
 /**
  * An A2UI data model implementation for the Jetpack Compose A2UI renderer.

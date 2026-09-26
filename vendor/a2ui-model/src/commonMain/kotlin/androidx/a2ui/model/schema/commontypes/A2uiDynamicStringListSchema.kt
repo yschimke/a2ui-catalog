@@ -22,6 +22,7 @@ import androidx.a2ui.model.schema.A2uiSchema
 import androidx.a2ui.model.schema.A2uiStringSchema
 import androidx.a2ui.model.schema.commontypes.internal.SCHEMA_ID_COMMON_TYPES
 import androidx.a2ui.model.schema.commontypes.internal.createDynamicTypeSchema
+import kotlin.jvm.JvmField
 
 /**
  * Represents string lists from literals, data bindings, or function calls.

@@ -16,7 +16,9 @@
 
 package androidx.a2ui.model.catalog.functions
 
-import java.util.Locale
+import ee.schimke.a2uicmp.port.Locale
+import ee.schimke.a2uicmp.port.Locales
+import kotlin.jvm.JvmField
 
 /** Resolves the current [Locale]. */
 public fun interface A2uiLocaleProvider {
@@ -27,6 +29,6 @@ public fun interface A2uiLocaleProvider {
     public companion object {
         /** Default provider using the current system locale. */
         @JvmField
-        public val Default: A2uiLocaleProvider = A2uiLocaleProvider { Locale.getDefault() }
+        public val Default: A2uiLocaleProvider = A2uiLocaleProvider { Locales.getDefault() }  // CMP-PORT: `Locale.US` / `getDefault()` are Java statics
     }
 }

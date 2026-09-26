@@ -25,6 +25,7 @@ import androidx.a2ui.model.schema.A2uiObjectSchema
 import androidx.a2ui.model.schema.A2uiSchema
 import androidx.a2ui.model.schema.A2uiStringSchema
 import androidx.a2ui.model.schema.commontypes.A2uiDynamicStringSchema
+import kotlin.jvm.JvmField
 
 /**
  * Validates a string against a regular expression pattern.

@@ -16,6 +16,8 @@
 
 package androidx.a2ui.model.protocol
 
+import kotlin.jvm.JvmName
+
 /** The unified interface for all messages sent from the A2A server to the A2UI client. */
 public sealed interface A2uiServerToClientMessage {
     /** The unique identifier of the surface this message targets. */

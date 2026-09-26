@@ -21,6 +21,7 @@ import androidx.a2ui.model.schema.A2uiNumberSchema
 import androidx.a2ui.model.schema.A2uiSchema
 import androidx.a2ui.model.schema.commontypes.internal.SCHEMA_ID_COMMON_TYPES
 import androidx.a2ui.model.schema.commontypes.internal.createDynamicTypeSchema
+import kotlin.jvm.JvmField
 
 /**
  * Represents number values from literals, data bindings, or function calls.

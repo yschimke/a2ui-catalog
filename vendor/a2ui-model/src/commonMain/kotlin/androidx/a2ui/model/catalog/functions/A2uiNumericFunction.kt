@@ -24,6 +24,7 @@ import androidx.a2ui.model.schema.A2uiNumberSchema
 import androidx.a2ui.model.schema.A2uiObjectSchema
 import androidx.a2ui.model.schema.A2uiSchema
 import androidx.a2ui.model.schema.commontypes.A2uiDynamicNumberSchema
+import kotlin.jvm.JvmField
 
 /**
  * Validates numeric range limits.

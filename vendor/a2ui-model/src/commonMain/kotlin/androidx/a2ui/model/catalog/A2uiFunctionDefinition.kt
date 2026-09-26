@@ -19,6 +19,7 @@
 package androidx.a2ui.model.catalog
 
 import androidx.a2ui.model.schema.A2uiSchema
+import kotlin.jvm.JvmName
 
 /** The JSON-compatible return types a function can advertise to the AI agent. */
 public enum class A2uiFunctionReturnType(public val value: String) {

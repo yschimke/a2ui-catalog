@@ -20,6 +20,7 @@ import androidx.a2ui.model.schema.A2uiCompositeSchema
 import androidx.a2ui.model.schema.A2uiObjectSchema
 import androidx.a2ui.model.schema.A2uiSchema
 import androidx.a2ui.model.schema.commontypes.internal.SCHEMA_ID_COMMON_TYPES
+import kotlin.jvm.JvmField
 
 /**
  * Holds accessibility properties for assistive technologies.

@@ -22,6 +22,7 @@ import androidx.a2ui.model.schema.A2uiObjectSchema
 import androidx.a2ui.model.schema.A2uiSchema
 import androidx.a2ui.model.schema.A2uiSchemaKeyword
 import androidx.a2ui.model.schema.A2uiStringSchema
+import kotlin.jvm.JvmName
 
 /**
  * Converts a function definition into an [A2uiSchema].

@@ -28,6 +28,21 @@ composePreviewPlugin = "2.26.0"
 # line of their own.
 composePreviewAnnotations = "3.8.4"
 
+# ── The Compose Multiplatform port (vendor/) ────────────────────────────────────────────────────
+# The in-tree CMP port of the A2UI release train above (see vendor/README.md). Pinned to the
+# Compose Multiplatform line whose Android variants re-export the AndroidX Compose closest to what
+# `material3-a2ui` 1.0.0-alpha01's POM names: CMP 1.13.0-alpha01 is AndroidX Compose 1.13.0-alpha02
+# and material3 1.5.0-alpha27, one alpha behind the POM's 1.13.0-alpha03 / 1.5.0-alpha28. The 1.12
+# line the sibling desktop catalogs render on is a whole Compose minor behind the library.
+compose-multiplatform = "1.13.0-alpha01"
+compose-multiplatform-material3 = "1.13.0-alpha01"
+# What the upstream POMs name, so the port declares the same closure. All three are multiplatform
+# artifacts with jvm and wasmJs variants.
+androidx-collection = "1.6.0"
+androidx-annotation = "1.10.0"
+kotlinx-serialization-json = "1.7.3"
+kotlinx-coroutines = "1.9.0"
+
 [libraries]
 a2ui-model = { module = "androidx.a2ui:a2ui-model", version.ref = "a2ui" }
 a2ui-engine = { module = "androidx.a2ui:a2ui-engine", version.ref = "a2ui" }
@@ -43,6 +58,19 @@ androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "androi
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "androidx-compose" }
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "androidx-compose" }
 
+# The CMP port's closure (vendor/). Compose Multiplatform coordinates, never the AndroidX AARs.
+cmp-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose-multiplatform" }
+cmp-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose-multiplatform" }
+cmp-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose-multiplatform" }
+cmp-animation = { module = "org.jetbrains.compose.animation:animation", version.ref = "compose-multiplatform" }
+cmp-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "compose-multiplatform-material3" }
+cmp-ui-test = { module = "org.jetbrains.compose.ui:ui-test", version.ref = "compose-multiplatform" }
+androidx-collection = { module = "androidx.collection:collection", version.ref = "androidx-collection" }
+androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "androidx-annotation" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 
@@ -51,6 +79,9 @@ composeai-preview-overrides = { module = "ee.schimke.composeai:data-preview-over
 
 [plugins]
 android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 composePreview = { id = "ee.schimke.composeai.preview", version.ref = "composePreviewPlugin" }
 ktfmt = { id = "com.ncorti.ktfmt.gradle", version.ref = "ktfmt" }

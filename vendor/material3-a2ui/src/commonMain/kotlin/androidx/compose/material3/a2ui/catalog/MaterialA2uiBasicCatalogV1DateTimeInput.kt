@@ -16,7 +16,7 @@
 
 package androidx.compose.material3.a2ui.catalog
 
-import android.text.format.DateFormat.is24HourFormat
+import ee.schimke.a2uicmp.port.is24HourFormat
 import androidx.a2ui.compose.runtime.A2uiComponentScope
 import androidx.a2ui.compose.ui.catalog.A2uiBasicCatalogV1
 import androidx.a2ui.model.protocol.A2uiException
@@ -51,17 +51,17 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLocale
-import androidx.compose.ui.res.stringResource
+import androidx.compose.material3.a2ui.stringResource
 import androidx.compose.ui.semantics.error
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastFirstOrNull
-import java.text.DateFormat
-import java.util.Calendar
-import java.util.Date
-import java.util.TimeZone
+import ee.schimke.a2uicmp.port.DateFormat
+import ee.schimke.a2uicmp.port.Calendar
+import ee.schimke.a2uicmp.port.Date
+import ee.schimke.a2uicmp.port.Locales
+import ee.schimke.a2uicmp.port.TimeZone
 
 /**
  * A Jetpack Compose Material 3 implementation of the A2UI Basic Catalog `"DateTimeInput"`
@@ -89,7 +89,8 @@ internal object MaterialA2uiBasicCatalogV1DateTimeInput : A2uiBasicCatalogV1.Dat
         var showStartDateDialog by rememberSaveable { mutableStateOf(false) }
         var showStartTimeDialog by rememberSaveable { mutableStateOf(false) }
 
-        val currentLocale = LocalLocale.current.platformLocale
+        // CMP-PORT: `platformLocale` is internal in CMP's common API; the tag round-trips on the JVM.
+        val currentLocale = Locales.forLanguageTag(LocalLocale.current.toLanguageTag())
 
         val selectDateText = stringResource(R.string.select_date)
         val startDateText =
@@ -295,7 +296,7 @@ private fun TimeInputDialog(
     onValueChange: (Long?) -> Unit,
     onDismissRequest: () -> Unit,
 ) {
-    val is24Hour = is24HourFormat(LocalContext.current)
+    val is24Hour = is24HourFormat()  // CMP-PORT: no `Context` off Android
     val (initialHour, initialMinute) =
         remember(value) {
             val calendar =
