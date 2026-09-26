@@ -1,0 +1,27 @@
+{
+  "$comment": [
+    "The AndroidX A2UI release vendored under vendor/ and ported to Compose Multiplatform.",
+    "Published versions are immutable and use <release>-cmp<portRevision>; bump portRevision",
+    "whenever this repository changes the published port without moving to a newer release.",
+    "The sources are the release's own -sources.jars, not androidx-main: see vendor/README.md."
+  ],
+  "release": "1.0.0-alpha01",
+  "source": "sources-jars",
+  "sourcesJars": {
+    "androidx.a2ui:a2ui-model:1.0.0-alpha01:sources": "ff22c9d01290c054b57b9cb42648958bccb7114b0938d120429ee19fe7c88471",
+    "androidx.a2ui:a2ui-engine:1.0.0-alpha01:sources": "592ef0e6e083d4efa3efa474f5056b5d4e012df974b622dcfa75da5bc66bad79",
+    "androidx.a2ui.compose:compose-runtime:1.0.0-alpha01:sources": "a1489483bec5ec7f524a3c52cad131c511a1a95e1ed789cfe552a243db63f752",
+    "androidx.a2ui.compose:compose-ui:1.0.0-alpha01:sources": "e5ff5a3fd14750fe29edc20f8cd01f5fd695743fdeb72db43dda524e06c2a9a3",
+    "androidx.compose.material3:material3-a2ui:1.0.0-alpha01:sources": "459cfad6bf6da665e676537601a8000edc0a553571cba3aa6cfe14d4bd80aca3"
+  },
+  "androidxMainReference": {
+    "commit": "e6bfe347707b0e0003e253189cb5ec5f4dda8fbf",
+    "differsFromRelease": [
+      "a2ui/a2ui-model: A2uiObjectSchema sorts `required` when serializing",
+      "a2ui/a2ui-engine: A2uiCoreSurfaceActor aliases the v0_9_1 basic catalog id to v0_9",
+      "a2ui/compose/compose-ui: A2uiBasicCatalogV1.CatalogId is no longer const; weight docs reworded",
+      "material3-a2ui: Button draws through a custom Layout; TextField wraps content height"
+    ]
+  },
+  "portRevision": 1
+}

@@ -15,7 +15,8 @@ differs.
 - **Branch names are `agent/…`**, never `claude/…`, `codex/…` or another agent prefix.
 - **Conventional commits** for PR titles and commit subjects (`feat:`, `fix:`, `docs:`, `ci:`, …).
 - **Run the formatter before committing** Kotlin: `./gradlew ktfmtFormat`. `ktfmtCheck` is a gate.
-  The vendored tree under `samples-catalog/src/main/kotlin/upstream/` is excluded, on purpose.
+  The vendored trees under `samples-catalog/src/main/kotlin/upstream/` and `vendor/` are excluded,
+  on purpose.
 - **Generated files are checked**: `a2ui-basic-catalog.schema.json` (`CatalogSchemaTest`),
   `ui-builder.policy.json`'s builtins (`scripts/ui-builder-policy.mjs --check`), `design-map.json`
   (`scripts/design-map.sh --check`), and the vendored samples (`scripts/import-samples.mjs --check`).
@@ -62,6 +63,20 @@ entry in a sticker.
 `androidx.a2ui:*`, `androidx.a2ui.compose:*` and `material3-a2ui` move together, in one PR, and the
 AndroidX Compose / material3 pins move with them to whatever `material3-a2ui`'s POM names. A bump
 regenerates the schema; read its diff and the sticker diff.
+
+## The Compose Multiplatform port (`vendor/`)
+
+- **Published port versions are immutable.** `ee.schimke.a2uicmp:*` is versioned
+  `<release>-cmp<portRevision>` from `vendor/a2ui-upstream.json`. Any change to a published module's
+  bytes (sources, or its `build.gradle.kts`) bumps `portRevision` in the same PR;
+  `.github/scripts/check-a2ui-cmp-port-revision.sh` fails the PR otherwise, and the publish workflow
+  never overwrites an existing version. Moving the port's Compose Multiplatform pins also changes
+  its POMs, so it bumps `portRevision` too, even though the check does not see it.
+- **Upstream's bytes stay upstream's.** `vendor/*/src/commonMain` is the release's `-sources.jar`.
+  Edit it only through the seam (`ee.schimke.a2uicmp.port`) or with a `CMP-PORT` comment, and list
+  the edit in `vendor/README.md`. Port-only code lives in `vendor/a2ui-port-runtime` or a module's
+  `src/commonPort`. A new A2UI release re-imports the jars verbatim first, then re-applies the edits.
+- **The sheets stay on the AARs.** `:catalog` and `:samples-catalog` must not depend on `:vendor:*`.
 
 ## Running Gradle
 
