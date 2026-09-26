@@ -15,7 +15,7 @@ the library changes how it draws a component, the sheet moves.
 
 | Module | System | What it is | Delivery branch (`yschimke/a2ui-catalog-out`) |
 | --- | --- | --- | --- |
-| [`:catalog`](catalog) | `a2ui-catalog` | The 18 basic-catalog components, 51 stickers | `design-artifacts/a2ui-catalog` |
+| [`:catalog`](catalog) | `a2ui-catalog` | The 18 basic-catalog components, 50 stickers | `design-artifacts/a2ui-catalog` |
 | [`:samples-catalog`](samples-catalog) | `a2ui-samples` | AndroidX's own A2UI sample screens, vendored | `design-artifacts/a2ui-samples` |
 | [`:a2ui-harness`](a2ui-harness) | — | The synchronous surface host and deterministic media both sheets draw through | — |
 
