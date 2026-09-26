@@ -81,8 +81,26 @@ Material drawing of the payload in a dotted card, above the controls that produc
 
 The whole A2UI stack (`androidx.a2ui:*`, `androidx.a2ui.compose:*`, `material3-a2ui`) is published
 as Android AARs at `minCompileSdk` 37.1, with no Compose Multiplatform port. A desktop module
-cannot put it on the classpath, so every module here is an AGP library rendered through Robolectric,
-the same choice m3-catalog's Glimmer sheet made for the same reason.
+cannot put it on the classpath, so every sheet here is an AGP library rendered through Robolectric,
+the same choice m3-catalog's Glimmer sheet made for the same reason. (The in-tree CMP port below is
+a separate artifact; the sheets deliberately do not draw with it.)
+
+## A Compose Multiplatform port, beside the sheets
+
+[`vendor/`](vendor/README.md) carries the same 1.0.0-alpha01 sources compiled for Compose
+Multiplatform (`jvm()` and `wasmJs`), so A2UI can render on the desktop JVM with Skiko and no
+Robolectric. Upstream's `androidx.*` packages and bytes are kept; the Android and JDK surface they
+touch goes through a narrow seam module, and every edit is listed in
+[`vendor/README.md`](vendor/README.md). [`:a2ui-desktop`](a2ui-desktop) is the proof: a real
+createSurface / updateComponents payload, parsed, applied and drawn by the vendored Material catalog
+under Compose Desktop.
+
+![A2UI rendered on Compose Desktop by the CMP port](docs/evidence/cmp-desktop-render.png)
+
+It publishes as `ee.schimke.a2uicmp:*:1.0.0-alpha01-cmp01` to the `a2ui-cmp-maven` branch of
+`yschimke/a2ui-catalog-out`. The sticker sheets do **not** use it: they are evidence of what the
+genuine AndroidX library draws, so they stay on the AARs until a desktop lane can be compared
+against them.
 
 ## Building
 
@@ -92,6 +110,8 @@ scripts/agent-gradle.sh :samples-catalog:composePreviewRender  # the sample scre
 scripts/agent-gradle.sh test                                    # inventory, schema, synchronous host
 node scripts/import-samples.mjs --check                         # vendored samples match upstream
 node scripts/ui-builder-policy.mjs --check                      # policy matches the schema
+scripts/agent-gradle.sh :a2ui-desktop:test                      # the CMP port renders on desktop
+scripts/agent-gradle.sh publishA2uiCmpToBuildDir                # the port's Maven tree
 ```
 
 Needs an Android SDK with `platforms;android-37.1`.
