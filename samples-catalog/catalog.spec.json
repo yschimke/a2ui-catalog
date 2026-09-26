@@ -1,0 +1,14 @@
+{
+  "$schema": "https://raw.githubusercontent.com/yschimke/compose-ai-tools/main/scripts/design-artifacts/catalog.spec.schema.json",
+  "$comment": "The AndroidX A2UI sample screens: material3-a2ui's integration-test demo, one screen per basic-catalog component, vendored at the commit in samples-catalog/import.json. Each render is the demo's compact layout — the Material catalog's drawing of the payload in a dotted card, above the vendored control panel that composed it. No kit reference: these are upstream's usage, not a design reproduction.",
+  "system": "a2ui-samples",
+  "title": "AndroidX A2UI samples",
+  "library": [
+    "androidx.compose.material3:material3-a2ui"
+  ],
+  "module": ":samples-catalog",
+  "modes": ["light"],
+  "display": {
+    "hero": "Button"
+  }
+}

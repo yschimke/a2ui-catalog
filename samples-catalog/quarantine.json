@@ -1,0 +1,17 @@
+{
+  "$comment": "Vendored files that are NOT imported, each with its reason. scripts/import-samples.mjs --check fails when a quarantined file becomes importable again, so a gap cannot outlive its cause.",
+  "samples": [
+    {
+      "file": "DemoActivity.kt",
+      "reason": "The demo's Activity and navigation host. Needs activity-compose and `ComposeUiFlags.isMediaQueryIntegrationEnabled`; the per-component screens it navigates to are rendered directly by SamplePreviews.kt instead."
+    },
+    {
+      "file": "ComponentDetailScreen.kt",
+      "reason": "The demo's detail screen collects A2UI messages on Dispatchers.Default and loads images through ImageRenderer (Coil, over the network), so a still capture would race the payload and depend on the network. SampleScreen.kt draws the same preview-over-controls layout on the synchronous, deterministic `:a2ui-harness` host."
+    },
+    {
+      "file": "ImageRenderer.kt",
+      "reason": "Loads the Image component's URL with Coil's SubcomposeAsyncImage over the network. Replaced by `:a2ui-harness`'s deterministic StickerMedia; only ComponentDetailScreen.kt (also quarantined) referenced it."
+    }
+  ]
+}

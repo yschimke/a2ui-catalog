@@ -1,0 +1,16 @@
+{
+  "$comment": "The AndroidX A2UI sample corpus, vendored by scripts/import-samples.mjs. The per-component samples live in material3-a2ui's INTEGRATION-TEST demo app (`compose/material3/integration-tests/material3-a2ui`), not in a `samples/` module: each `<Component>Sample` is the control panel that composes that component's A2UI payload, and the demo draws the payload beside it. They are not published as an artifact, so the tree is vendored at a pinned commit. `ref` is androidx-main at the commit this catalog first imported (2026-09-25), after the 1.0.0-alpha01 cut on 2026-09-23; the compiler is the only gate that the two agree, as with m3-catalog's Glimmer corpus. The library's own KDoc samples (`material3-a2ui/samples`, A2uiSurfaceSamples.kt) are not imported: all three collect messages on Dispatchers.Default and two of them delay 2s before the payload, so a still capture of them would be a capture of a loading spinner at best and a race at worst.",
+  "repo": "https://github.com/androidx/androidx",
+  "libraries": [
+    {
+      "name": "material3-a2ui-demo",
+      "ref": "e6bfe347707b0e0003e253189cb5ec5f4dda8fbf",
+      "refDescription": "androidx-main on 2026-09-25, two days after material3-a2ui 1.0.0-alpha01.",
+      "paths": [
+        "compose/material3/integration-tests/material3-a2ui/src/main/java/androidx/compose/material3/integration/a2ui"
+      ],
+      "artifactCoordinates": "androidx.compose.material3:material3-a2ui",
+      "artifactVersion": "1.0.0-alpha01"
+    }
+  ]
+}

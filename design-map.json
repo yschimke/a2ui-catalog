@@ -1,0 +1,58 @@
+{
+  "components": [
+    {
+      "code": "catalog/src/main/kotlin/ee/schimke/a2uicatalog/sections/Actions.kt#ButtonSticker",
+      "source": "figma",
+      "ref": "figma:ocdacdEsnHipMJD3egzxKb/57994:2324",
+      "previewId": "ee.schimke.a2uicatalog.sections.ActionsKt.ButtonSticker"
+    },
+    {
+      "code": "catalog/src/main/kotlin/ee/schimke/a2uicatalog/sections/Containers.kt#CardSticker",
+      "source": "figma",
+      "ref": "figma:ocdacdEsnHipMJD3egzxKb/52346:27574",
+      "previewId": "ee.schimke.a2uicatalog.sections.ContainersKt.CardSticker"
+    },
+    {
+      "code": "catalog/src/main/kotlin/ee/schimke/a2uicatalog/sections/Containers.kt#TabsSticker",
+      "source": "figma",
+      "ref": "figma:ocdacdEsnHipMJD3egzxKb/54563:40116",
+      "previewId": "ee.schimke.a2uicatalog.sections.ContainersKt.TabsSticker"
+    },
+    {
+      "code": "catalog/src/main/kotlin/ee/schimke/a2uicatalog/sections/Content.kt#DividerSticker",
+      "source": "figma",
+      "ref": "figma:ocdacdEsnHipMJD3egzxKb/51816:5860",
+      "previewId": "ee.schimke.a2uicatalog.sections.ContentKt.DividerSticker"
+    },
+    {
+      "code": "catalog/src/main/kotlin/ee/schimke/a2uicatalog/sections/Fields.kt#CheckBoxSticker",
+      "source": "figma",
+      "ref": "figma:ocdacdEsnHipMJD3egzxKb/51859:5629",
+      "previewId": "ee.schimke.a2uicatalog.sections.FieldsKt.CheckBoxSticker"
+    },
+    {
+      "code": "catalog/src/main/kotlin/ee/schimke/a2uicatalog/sections/Fields.kt#ChoicePickerSticker",
+      "source": "figma",
+      "ref": "figma:ocdacdEsnHipMJD3egzxKb/53923:28465",
+      "previewId": "ee.schimke.a2uicatalog.sections.FieldsKt.ChoicePickerSticker"
+    },
+    {
+      "code": "catalog/src/main/kotlin/ee/schimke/a2uicatalog/sections/Fields.kt#DateTimeInputSticker",
+      "source": "figma",
+      "ref": "figma:ocdacdEsnHipMJD3egzxKb/53923:28267",
+      "previewId": "ee.schimke.a2uicatalog.sections.FieldsKt.DateTimeInputSticker"
+    },
+    {
+      "code": "catalog/src/main/kotlin/ee/schimke/a2uicatalog/sections/Fields.kt#SliderSticker",
+      "source": "figma",
+      "ref": "figma:ocdacdEsnHipMJD3egzxKb/58008:10357",
+      "previewId": "ee.schimke.a2uicatalog.sections.FieldsKt.SliderSticker"
+    },
+    {
+      "code": "catalog/src/main/kotlin/ee/schimke/a2uicatalog/sections/Fields.kt#TextFieldSticker",
+      "source": "figma",
+      "ref": "figma:ocdacdEsnHipMJD3egzxKb/52798:24397",
+      "previewId": "ee.schimke.a2uicatalog.sections.FieldsKt.TextFieldSticker"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+[versions]
+kotlin = "2.4.20"
+ktfmt = "0.27.0"
+# The Android Gradle Plugin. `material3-a2ui`'s AAR metadata asks for AGP 9.1.0 or newer and
+# `compileSdk` 37.1; 9.4.1 is the line the sibling catalogs (m3-catalog, wear-m3-catalog) build on.
+agp = "9.4.1"
+# Robolectric is what actually executes the previews. Pinned to the version the sibling repositories
+# render with, so the Android lanes cannot skew.
+robolectric = "4.17"
+
+# ── The A2UI alpha ──────────────────────────────────────────────────────────────────────────────
+# Three groups, one release train: `androidx.a2ui` (the protocol model and engine),
+# `androidx.a2ui.compose` (the Compose runtime and catalog API) and `material3-a2ui` (the Material 3
+# basic catalog). They are cut together and a skewed pair fails at runtime, when a catalog built
+# against one engine is handed to another's message processor — so all three move in one PR.
+# Renovate groups them (.github/renovate.json).
+a2ui = "1.0.0-alpha01"
+# The AndroidX Compose line `material3-a2ui` 1.0.0-alpha01's POM depends on. Pinned to exactly what
+# the library was built against rather than to the newest alpha, so the stickers draw the catalog's
+# components on the Compose they were written for.
+androidx-compose = "1.13.0-alpha03"
+androidx-compose-material3 = "1.5.0-alpha28"
+
+# compose-ai-tools: the `ee.schimke.composeai.preview` Gradle plugin and the reusable CI
+# actions/workflows are one release — keep both pinned together.
+composePreviewPlugin = "2.26.0"
+# compose-preview-daemon: `preview-annotations` and `data-preview-overrides-runtime`, on a release
+# line of their own.
+composePreviewAnnotations = "3.8.4"
+
+[libraries]
+a2ui-model = { module = "androidx.a2ui:a2ui-model", version.ref = "a2ui" }
+a2ui-engine = { module = "androidx.a2ui:a2ui-engine", version.ref = "a2ui" }
+a2ui-compose-runtime = { module = "androidx.a2ui.compose:compose-runtime", version.ref = "a2ui" }
+a2ui-compose-ui = { module = "androidx.a2ui.compose:compose-ui", version.ref = "a2ui" }
+a2ui-material3 = { module = "androidx.compose.material3:material3-a2ui", version.ref = "a2ui" }
+
+androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "androidx-compose" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "androidx-compose-material3" }
+androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "androidx-compose" }
+# `androidx.compose.ui.tooling.preview.Preview` — the FQN compose-preview's discovery scans for. The
+# ANDROIDX artifact, not a Compose Multiplatform republication.
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "androidx-compose" }
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "androidx-compose" }
+
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+
+composeai-preview-annotations = { module = "ee.schimke.composeai:preview-annotations", version.ref = "composePreviewAnnotations" }
+
+[plugins]
+android-library = { id = "com.android.library", version.ref = "agp" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+composePreview = { id = "ee.schimke.composeai.preview", version.ref = "composePreviewPlugin" }
+ktfmt = { id = "com.ncorti.ktfmt.gradle", version.ref = "ktfmt" }

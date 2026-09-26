@@ -1,0 +1,5 @@
+{
+  "$schema": "https://github.com/yschimke/design-parity/schema/parity-config.schema.json",
+  "$comment": "DESIGN-LED. The Material 3 Design Kit is the reference for every mapped component, because `material3-a2ui` claims to draw the A2UI basic catalog with Material 3: where the kit and the sticker disagree, the kit says what Material 3 looks like. Unlike m3-catalog, a divergence is usually not fixable here — the sticker is the library's own drawing of a payload — so it is recorded in docs/FINDINGS.md against the library version rather than patched. Design-led also keeps Code-to-Canvas push-back structurally impossible: every Figma interaction in this repository is read-only.",
+  "direction": "design-led"
+}

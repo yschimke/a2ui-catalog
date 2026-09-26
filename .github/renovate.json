@@ -1,0 +1,29 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>yschimke/renovate-config",
+    ":dependencyDashboard",
+    ":semanticCommits"
+  ],
+  "timezone": "UTC",
+  "prConcurrentLimit": 10,
+  "packageRules": [
+    {
+      "description": "The A2UI release train: `androidx.a2ui`, `androidx.a2ui.compose` and `material3-a2ui` are cut together and a skewed pair fails at runtime, when a catalog built against one engine meets another's processor. One PR, never automerged: the sticker sheet and a2ui-basic-catalog.schema.json are the review.",
+      "matchPackageNames": ["/^androidx\\.a2ui/", "androidx.compose.material3:material3-a2ui"],
+      "groupName": "A2UI",
+      "automerge": false
+    },
+    {
+      "description": "The AndroidX Compose line is pinned to exactly what material3-a2ui's POM names; it moves when the A2UI train does, not on its own.",
+      "matchPackageNames": ["/^androidx\\.compose\\./"],
+      "excludePackageNames": ["androidx.compose.material3:material3-a2ui"],
+      "enabled": false
+    },
+    {
+      "description": "compose-ai-tools' Gradle plugin and the reusable workflows are one release.",
+      "matchPackageNames": ["ee.schimke.composeai.preview", "/^ee\\.schimke\\.composeai/"],
+      "groupName": "compose-preview"
+    }
+  ]
+}
