@@ -59,3 +59,7 @@ include(":vendor:a2ui-compose-runtime")
 include(":vendor:a2ui-compose-ui")
 
 include(":vendor:material3-a2ui")
+
+// The proof the port renders without Robolectric: a Compose Desktop `ImageComposeScene` draws a
+// real A2UI payload through the vendored Material catalog. Not published. See a2ui-desktop/.
+include(":a2ui-desktop")
