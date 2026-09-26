@@ -50,6 +50,10 @@ dependencies {
   implementation(libs.androidx.compose.ui.tooling.preview)
   implementation(libs.androidx.compose.ui.tooling)
   implementation(libs.composeai.preview.annotations)
+  implementation(libs.composeai.preview.overrides)
+
+  testImplementation(libs.robolectric)
+  testImplementation(libs.kotlin.test.junit)
 }
 
 // The vendored tree is upstream's bytes. ktfmt would rewrite it into a permanent diff against every
