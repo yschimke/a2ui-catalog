@@ -55,12 +55,34 @@ const SLOT_REFS = {
 /** A JSON Schema property → the builder's `jsonType`. `$ref`s to dynamic values keep their shape. */
 function jsonTypeOf(schema) {
   if (schema.type) return Array.isArray(schema.type) ? schema.type[0] : schema.type;
+  // A composed type (`Icon.name` is a `oneOf` whose first branch is the built-in name enum;
+  // `DateTimeInput.min` is an `allOf` over `DynamicString` plus a format rule) takes the type of
+  // its first branch that states one, rather than falling through to `object`.
+  for (const branch of composedBranches(schema)) {
+    const type = jsonTypeOf(branch);
+    if (type !== "object" || branch.type === "object") return type;
+  }
   const ref = schema.$ref ?? "";
   if (/Dynamic(String)$/.test(ref)) return "string";
   if (/DynamicNumber$/.test(ref)) return "number";
   if (/DynamicBoolean$/.test(ref)) return "boolean";
   if (/DynamicStringList$/.test(ref)) return "array";
   return "object";
+}
+
+/** The branches of a `oneOf` / `anyOf` / `allOf`, in order; empty for a plain schema. */
+function composedBranches(schema) {
+  return [...(schema.oneOf ?? []), ...(schema.anyOf ?? []), ...(schema.allOf ?? [])];
+}
+
+/** The first enum a schema or one of its composed branches states. */
+function enumOf(schema) {
+  if (schema.enum) return schema.enum;
+  for (const branch of composedBranches(schema)) {
+    const values = enumOf(branch);
+    if (values) return values;
+  }
+  return undefined;
 }
 
 export function project(schema) {
@@ -84,7 +106,8 @@ export function project(schema) {
         continue;
       }
       const entry = { name: key, jsonType: jsonTypeOf(prop), required: required.has(key) };
-      if (prop.enum) entry.allowedValues = prop.enum;
+      const allowed = enumOf(prop);
+      if (allowed) entry.allowedValues = allowed;
       const notes = [prop.description, prop.$ref ? `A2UI type: ${prop.$ref.split("/").pop()}` : null]
         .filter(Boolean)
         .join(" ");
