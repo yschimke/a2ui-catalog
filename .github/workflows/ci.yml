@@ -1,0 +1,150 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build + discover previews
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: ./.github/actions/setup
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
+
+      # Both sheets. `:samples-catalog` is where a vendored-sample drift shows up first: the tree is
+      # upstream's bytes at a pinned commit, compiled against the published alpha, and the compiler
+      # is the only gate that the two still agree.
+      - name: Assemble
+        run: ./gradlew :catalog:assemble :samples-catalog:assemble --stacktrace
+
+      # Discovery turns the @CatalogComponent / @CatalogVariant annotations into the published
+      # inventory. A sticker that compiles but is not discovered silently vanishes from the sheet.
+      - name: Discover previews
+        run: ./gradlew :catalog:composePreviewDiscover :samples-catalog:composePreviewDiscover --stacktrace
+
+      # The Figma join (design-map.json) is projected from the annotations; a reference edited in
+      # Kotlin but not re-projected would publish the old node.
+      - uses: actions/setup-node@v7.0.0
+        with:
+          node-version: 24.21.0
+      - name: design-map.json matches the annotations
+        run: scripts/design-map.sh --check
+
+      - uses: actions/upload-artifact@v7.0.1
+        if: always()
+        with:
+          name: previews-manifest
+          path: |
+            catalog/build/compose-previews/previews.json
+            samples-catalog/build/compose-previews/previews.json
+          if-no-files-found: warn
+
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: ./.github/actions/setup
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
+      # `StickerHostTest` (the synchronous-host property every sticker depends on) and
+      # `CatalogInventoryTest` (one card per basic-catalog component, each mapped or excused).
+      - run: ./gradlew test --stacktrace
+      - if: always()
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: test-reports
+          path: |
+            **/build/reports/tests/**
+            **/build/test-results/**
+          if-no-files-found: ignore
+
+  render:
+    name: Render both sheets
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: ./.github/actions/setup
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
+      # A render task exits 0 having written nothing when every capture fails the same way, so the
+      # count is asserted: 51 stickers and 19 sample screens.
+      - run: ./gradlew :catalog:composePreviewRender :samples-catalog:composePreviewRender --stacktrace
+      - name: Every preview produced a PNG
+        run: |
+          set -euo pipefail
+          for pair in catalog:51 samples-catalog:19; do
+            module="${pair%%:*}"; want="${pair##*:}"
+            got=$(find "$module/build/compose-previews/renders" -name '*.png' | wc -l)
+            echo "$module: $got / $want"
+            [ "$got" -eq "$want" ] || { echo "::error::$module rendered $got PNGs, expected $want"; exit 1; }
+          done
+      - uses: actions/upload-artifact@v7.0.1
+        if: always()
+        with:
+          name: renders
+          path: |
+            catalog/build/compose-previews/renders/
+            samples-catalog/build/compose-previews/renders/
+          if-no-files-found: warn
+
+  ktfmt:
+    name: ktfmtCheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: ./.github/actions/setup
+        with:
+          cache-read-only: 'true'
+      - run: ./gradlew ktfmtCheck --stacktrace
+
+  spec:
+    name: Validate catalog specs
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/checkout@v7.0.1
+        with:
+          repository: yschimke/compose-ai-tools
+          ref: main
+          path: compose-ai-tools
+          persist-credentials: false
+      - uses: actions/setup-node@v7.0.0
+        with:
+          node-version: 24.21.0
+      # The build-free pre-flight: resolves every spec reference against the module's actual
+      # `@Preview` functions before design-artifacts.yml spends a runner on a render.
+      - name: validate-catalog-spec
+        run: |
+          node compose-ai-tools/scripts/design-artifacts/validate-catalog-spec.mjs \
+            --spec catalog.spec.json --module-dir catalog
+          node compose-ai-tools/scripts/design-artifacts/validate-catalog-spec.mjs \
+            --spec samples-catalog/catalog.spec.json --module-dir samples-catalog
+          node compose-ai-tools/scripts/design-artifacts/validate-ui-builder-policy.mjs \
+            --policy ui-builder.policy.json --strict
+      # The policy's builtins are projected from the catalog's own JSON Schema, which
+      # CatalogSchemaTest holds to the library; this holds the projection to the schema.
+      - name: ui-builder policy matches the catalog schema
+        run: node scripts/ui-builder-policy.mjs --check
+      # The vendored samples are upstream's bytes at a pinned commit plus the patches in
+      # samples-catalog/patches/. This re-imports and diffs, so a hand edit to a vendored file, a
+      # patch that no longer applies, or a quarantined file that became importable all fail here.
+      - name: Vendored samples match a fresh import
+        run: node scripts/import-samples.mjs --check

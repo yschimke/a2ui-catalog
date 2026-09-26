@@ -1,0 +1,97 @@
+name: Design Artifacts
+
+# Publishes both sheets to yschimke/a2ui-catalog-out through compose-ai-tools' reusable workflow:
+# `design-artifacts/a2ui-catalog` (the basic-catalog stickers) and `design-artifacts/a2ui-samples`
+# (the AndroidX sample screens). preview.coo.ee serves each delivery branch as a catalog.
+#
+# Both are Android sheets: `desktop-render: false` routes them to the Robolectric lane, the only one
+# the A2UI AARs can be put on (see catalog/build.gradle.kts).
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Mondays 06:00 UTC
+  push:
+    branches: [main]
+    paths:
+      - 'a2ui-harness/**'
+      - 'catalog/**'
+      - 'catalog.spec.json'
+      - 'ui-builder.policy.json'
+      - 'samples-catalog/**'
+      - 'gradle/**'
+      - 'build.gradle.kts'
+      - 'settings.gradle.kts'
+      - 'gradle.properties'
+      - '.github/workflows/design-artifacts.yml'
+  workflow_dispatch:
+    inputs:
+      allow_incomplete:
+        description: Publish even when some previews fail to render
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  a2ui-catalog:
+    name: a2ui-catalog
+    if: ${{ github.repository == 'yschimke/a2ui-catalog' }}
+    permissions:
+      contents: write
+    concurrency:
+      group: design-artifacts-${{ github.ref }}-a2ui-catalog
+      cancel-in-progress: false
+    uses: yschimke/compose-ai-tools/.github/workflows/design-artifacts-reusable.yml@main
+    with:
+      system: a2ui-catalog
+      artifact-repository: yschimke/a2ui-catalog-out
+      spec: catalog.spec.json
+      module: ':catalog'
+      # The design map is projected from the annotations by the reusable workflow's own default;
+      # every `reference` names a node of the M3 Design Kit (see catalog.spec.json).
+      reference-cache-branch: design-parity/reference
+      cli-version: catalog
+      catalog-key: composePreviewPlugin
+      desktop-render: false
+      publish-live-bundle: true
+      defer-figma-svg: false
+      split-per-preview: false
+      commit-user-name: Yuri Schimke
+      commit-user-email: yuri@schimke.ee
+      timeout-minutes: 60
+      render-timeout: 1800
+      render-shards: 1
+      allow-incomplete: ${{ github.event_name == 'workflow_dispatch' && inputs.allow_incomplete }}
+    secrets:
+      artifacts_token: ${{ secrets.ARTIFACTS_TOKEN }}
+      figma_token: ${{ secrets.FIGMA_TOKEN }}
+
+  a2ui-samples:
+    name: a2ui-samples
+    if: ${{ github.repository == 'yschimke/a2ui-catalog' }}
+    permissions:
+      contents: write
+    concurrency:
+      group: design-artifacts-${{ github.ref }}-a2ui-samples
+      cancel-in-progress: false
+    uses: yschimke/compose-ai-tools/.github/workflows/design-artifacts-reusable.yml@main
+    with:
+      system: a2ui-samples
+      artifact-repository: yschimke/a2ui-catalog-out
+      spec: samples-catalog/catalog.spec.json
+      module: ':samples-catalog'
+      design-map-command: printf '{"components":[]}\n' > design-map.json
+      cli-version: catalog
+      catalog-key: composePreviewPlugin
+      desktop-render: false
+      publish-live-bundle: true
+      split-per-preview: false
+      commit-user-name: Yuri Schimke
+      commit-user-email: yuri@schimke.ee
+      timeout-minutes: 60
+      render-timeout: 1800
+      render-shards: 1
+      allow-incomplete: ${{ github.event_name == 'workflow_dispatch' && inputs.allow_incomplete }}
+    secrets:
+      artifacts_token: ${{ secrets.ARTIFACTS_TOKEN }}

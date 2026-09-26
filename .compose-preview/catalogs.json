@@ -1,0 +1,28 @@
+{
+  "$comment": "What this repository publishes, and how preview.coo.ee should present it. Read by a box that nominates this project with `--catalog-registry yschimke/a2ui-catalog`: every entry is served exactly as one of the box's own `catalogs.json` entries would be. The operator still wins: an id the box already configures keeps the box's entry, and `sites` are ignored.",
+  "groups": [
+    {
+      "id": "design-systems",
+      "heading": "Design systems",
+      "priority": 10
+    },
+    {
+      "id": "androidx-samples",
+      "heading": "AndroidX samples",
+      "priority": 5
+    }
+  ],
+  "catalogs": [
+    {
+      "$comment": "The A2UI basic catalog as `material3-a2ui` draws it, matched against the M3 Design Kit.",
+      "system": "a2ui-catalog",
+      "group": "design-systems"
+    },
+    {
+      "$comment": "AndroidX's own A2UI sample screens, vendored from the material3-a2ui demo.",
+      "system": "a2ui-samples",
+      "group": "androidx-samples",
+      "attributionRepos": ["androidx/androidx"]
+    }
+  ]
+}

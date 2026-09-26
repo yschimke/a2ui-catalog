@@ -1,0 +1,147 @@
+{
+  "schema": "compose-preview-design-map-variants/v1",
+  "components": [
+    {
+      "code": "catalog/src/main/kotlin/ee/schimke/a2uicatalog/sections/Actions.kt#ButtonSticker",
+      "componentId": "Button",
+      "reference": "figma:ocdacdEsnHipMJD3egzxKb/57994:2324",
+      "basePreviewId": "ee.schimke.a2uicatalog.sections.ActionsKt.ButtonSticker",
+      "renders": [
+        {
+          "previewId": "ee.schimke.a2uicatalog.sections.ActionsKt.ButtonDefaultSticker",
+          "name": "default",
+          "seeds": [
+            {
+              "key": "variant",
+              "raw": "default"
+            }
+          ],
+          "reference": "figma:ocdacdEsnHipMJD3egzxKb/57994:2284"
+        },
+        {
+          "previewId": "ee.schimke.a2uicatalog.sections.ActionsKt.ButtonBorderlessSticker",
+          "name": "borderless",
+          "seeds": [
+            {
+              "key": "variant",
+              "raw": "borderless"
+            }
+          ],
+          "reference": "figma:ocdacdEsnHipMJD3egzxKb/57994:2264"
+        }
+      ]
+    },
+    {
+      "code": "catalog/src/main/kotlin/ee/schimke/a2uicatalog/sections/Fields.kt#CheckBoxSticker",
+      "componentId": "CheckBox",
+      "reference": "figma:ocdacdEsnHipMJD3egzxKb/51859:5629",
+      "basePreviewId": "ee.schimke.a2uicatalog.sections.FieldsKt.CheckBoxSticker",
+      "renders": [
+        {
+          "previewId": "ee.schimke.a2uicatalog.sections.FieldsKt.CheckBoxUncheckedSticker",
+          "name": "unchecked",
+          "seeds": [
+            {
+              "key": "state",
+              "raw": "unchecked"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "catalog/src/main/kotlin/ee/schimke/a2uicatalog/sections/Fields.kt#ChoicePickerSticker",
+      "componentId": "ChoicePicker",
+      "reference": "figma:ocdacdEsnHipMJD3egzxKb/53923:28465",
+      "basePreviewId": "ee.schimke.a2uicatalog.sections.FieldsKt.ChoicePickerSticker",
+      "renders": [
+        {
+          "previewId": "ee.schimke.a2uicatalog.sections.FieldsKt.ChoicePickerExclusiveSticker",
+          "name": "mutuallyExclusive",
+          "seeds": [
+            {
+              "key": "variant",
+              "raw": "mutuallyExclusive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "catalog/src/main/kotlin/ee/schimke/a2uicatalog/sections/Fields.kt#DateTimeInputSticker",
+      "componentId": "DateTimeInput",
+      "reference": "figma:ocdacdEsnHipMJD3egzxKb/53923:28267",
+      "basePreviewId": "ee.schimke.a2uicatalog.sections.FieldsKt.DateTimeInputSticker",
+      "renders": [
+        {
+          "previewId": "ee.schimke.a2uicatalog.sections.FieldsKt.DateTimeInputDateSticker",
+          "name": "false",
+          "seeds": [
+            {
+              "key": "enableTime",
+              "raw": "false"
+            }
+          ]
+        },
+        {
+          "previewId": "ee.schimke.a2uicatalog.sections.FieldsKt.DateTimeInputTimeSticker",
+          "name": "false",
+          "seeds": [
+            {
+              "key": "enableDate",
+              "raw": "false"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "catalog/src/main/kotlin/ee/schimke/a2uicatalog/sections/Fields.kt#TextFieldSticker",
+      "componentId": "TextField",
+      "reference": "figma:ocdacdEsnHipMJD3egzxKb/52798:24397",
+      "basePreviewId": "ee.schimke.a2uicatalog.sections.FieldsKt.TextFieldSticker",
+      "renders": [
+        {
+          "previewId": "ee.schimke.a2uicatalog.sections.FieldsKt.TextFieldLongTextSticker",
+          "name": "longText",
+          "seeds": [
+            {
+              "key": "variant",
+              "raw": "longText"
+            }
+          ]
+        },
+        {
+          "previewId": "ee.schimke.a2uicatalog.sections.FieldsKt.TextFieldNumberSticker",
+          "name": "number",
+          "seeds": [
+            {
+              "key": "variant",
+              "raw": "number"
+            }
+          ]
+        },
+        {
+          "previewId": "ee.schimke.a2uicatalog.sections.FieldsKt.TextFieldObscuredSticker",
+          "name": "obscured",
+          "seeds": [
+            {
+              "key": "variant",
+              "raw": "obscured"
+            }
+          ]
+        },
+        {
+          "previewId": "ee.schimke.a2uicatalog.sections.FieldsKt.TextFieldEmptySticker",
+          "name": "empty",
+          "seeds": [
+            {
+              "key": "state",
+              "raw": "empty"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

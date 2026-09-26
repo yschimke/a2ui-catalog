@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/yschimke/compose-ai-tools/main/scripts/design-artifacts/catalog.spec.schema.json",
+  "$comment": "Cover-sheet spec only. The component inventory — ids, sections, groups, captions and variants — lives next to the @Previews as @CatalogGroup / @CatalogComponent / @CatalogVariant annotations under catalog/src/main/kotlin/ee/schimke/a2uicatalog/sections/, and CatalogInventoryTest holds it to the eighteen components of the A2UI basic catalog v0.9.1. `referenceKits` names the Material 3 Design Kit because `material3-a2ui` draws the basic catalog with Material 3 components: a Card is an OutlinedCard, Tabs a PrimaryTabRow, a primary Button a filled Button, so the kit node for that Material component is the right comparison. Components the kit has no node for (layout, media, text roles) say so with `noReference`. There is no `compareWith` against m3-catalog: this sheet is rasterised by Robolectric while m3-catalog is rasterised by Skiko, and pairing the two would put a renderer difference into a comparison meant to be about the catalog.",
+  "system": "a2ui-catalog",
+  "title": "A2UI basic catalog (Material 3)",
+  "library": [
+    "androidx.compose.material3:material3-a2ui",
+    "androidx.a2ui.compose:compose-ui",
+    "androidx.a2ui.compose:compose-runtime",
+    "androidx.a2ui:a2ui-model"
+  ],
+  "module": ":catalog",
+  "modes": ["light"],
+  "display": {
+    "hero": "Card"
+  },
+  "referenceKits": [
+    "https://www.figma.com/design/ocdacdEsnHipMJD3egzxKb/Material-3-Design-Kit--Community-"
+  ]
+}
