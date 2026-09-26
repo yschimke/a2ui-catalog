@@ -27,7 +27,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ee.schimke.a2uicatalog.harness.A2uiDocumentView
+import ee.schimke.a2uicatalog.harness.A2uiDocument
 import ee.schimke.a2uicatalog.harness.StickerCatalog
 import ee.schimke.a2uicatalog.harness.rememberStickerHost
 import ee.schimke.composeai.overrides.previewOverrideString
@@ -65,12 +65,22 @@ fun SampleScreen(component: UiComponent, controls: @Composable (PayloadSink) -> 
       // something (its payload arrives from a LaunchedEffect), and re-declared as it changes; the
       // last declaration is the one recorded. Only an edited document replaces the sample's own.
       val document = sent?.let { previewOverrideString(DOCUMENT_KNOB, it) }
-      val edited = document?.takeIf { it != sent }
+      // An edited document is applied to the same host and drawn in the same card, under the same
+      // theme and framing, so an edit changes what the payload says and nothing else.
+      val edited =
+        document
+          ?.takeIf { it != sent }
+          ?.let { source -> remember(host, source) { A2uiDocument.parse(source) } }
+      val editedSurface = edited?.let { remember(host, it) { host.show(it) } }
       Column(modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
         PreviewCard(
           component = component,
-          surface = surface,
-          edited = edited,
+          surface = if (edited != null) editedSurface else surface,
+          errors =
+            edited?.errors?.ifEmpty {
+              if (editedSurface == null) listOf("The edited document created no surface.")
+              else emptyList()
+            } ?: emptyList(),
           modifier = Modifier.padding(vertical = 8.dp).fillMaxWidth().height(240.dp),
         )
         Text(
@@ -88,7 +98,7 @@ fun SampleScreen(component: UiComponent, controls: @Composable (PayloadSink) -> 
 private fun PreviewCard(
   component: UiComponent,
   surface: A2uiSurfaceModel?,
-  edited: String?,
+  errors: List<String>,
   modifier: Modifier,
 ) {
   Card(
@@ -108,8 +118,12 @@ private fun PreviewCard(
           .padding(16.dp),
       contentAlignment = Alignment.Center,
     ) {
-      if (edited != null) {
-        A2uiDocumentView(edited, modifier = surfaceModifier(component))
+      if (errors.isNotEmpty()) {
+        Text(
+          errors.joinToString("\n"),
+          style = MaterialTheme.typography.bodySmall,
+          color = MaterialTheme.colorScheme.error,
+        )
       } else if (surface != null) {
         A2uiSurface(
           surfaceModel = surface,

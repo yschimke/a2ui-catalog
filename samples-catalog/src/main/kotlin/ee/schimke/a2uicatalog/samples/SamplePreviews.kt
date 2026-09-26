@@ -170,8 +170,7 @@ fun IconSamplePreview() = SampleScreen(UiComponent.ICON) { IconSample(onPayloadU
   group = "Content",
   noReference = SAMPLE,
   caption = "`DividerSample` at its initial settings, above the payload it produces.",
-  related =
-    ["a2ui-catalog=Divider", "a2ui-catalog=Column", "a2ui-catalog=Row", "a2ui-catalog=Text"],
+  related = ["a2ui-catalog=Divider", "a2ui-catalog=Column", "a2ui-catalog=Text"],
 )
 @Preview(name = "Divider", widthDp = 412, heightDp = 915)
 @Composable
