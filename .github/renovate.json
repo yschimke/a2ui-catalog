@@ -22,7 +22,7 @@
     },
     {
       "description": "compose-ai-tools' Gradle plugin and the reusable workflows are one release.",
-      "matchPackageNames": ["ee.schimke.composeai.preview", "/^ee\\.schimke\\.composeai/"],
+      "matchPackageNames": ["ee.schimke.composeai.preview", "/^ee\\.schimke\\.composeai/", "yschimke/compose-ai-tools"],
       "groupName": "compose-preview"
     }
   ]

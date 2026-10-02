@@ -1,0 +1,89 @@
+name: Compose Preview
+
+# Renders the catalog's @Previews on every PR and posts a before/after visual diff, and refreshes
+# the baseline on every merge to main. This is the repo's review surface: a design catalog's diff
+# *is* pixels, so a text-only review of a sticker change tells a reviewer nothing. Same shape as
+# yschimke/wear-m3-catalog's compose-preview.yml; baselines live in yschimke/a2ui-catalog-out.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: compose-preview-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  # Two jobs rather than one with computed permissions: `permissions` takes only literals, and an
+  # expression there makes GitHub reject the whole workflow. The pull-request job can only read and
+  # never sees ARTIFACTS_TOKEN; only the baseline job, on this repository's own pushes, can write.
+  # The comment is posted by compose-preview-publish.yml, which runs on `workflow_run` with write
+  # access and none of the pull request's code.
+  apply:
+    name: Render previews (baseline or PR comment, auto-selected)
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup
+        with:
+          cache-read-only: 'true'
+      - uses: yschimke/compose-ai-tools/.github/actions/apply@v2.26.0
+        with:
+          artifact-repository: yschimke/a2ui-catalog-out
+          artifacts-token: ''
+          phase: render
+          # Single source of truth for the renderer version: the composePreviewPlugin entry in
+          # libs.versions.toml. A newer published CLI auto-installed against an older applied
+          # plugin breaks preview discovery outright.
+          cli-version: catalog
+          catalog-key: composePreviewPlugin
+          only: compose
+          # Two small sheets (:catalog and :samples-catalog); the action's 600s default leaves no
+          # room for a cold Gradle cache.
+          timeout: '1200'
+
+      - uses: actions/upload-artifact@v7.0.1
+        with:
+          name: compose-preview-handoff
+          path: _compose_preview_handoff/
+          if-no-files-found: error
+          retention-days: 1
+
+  baseline:
+    name: Render previews (baseline)
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup
+        with:
+          cache-read-only: 'false'
+      - uses: yschimke/compose-ai-tools/.github/actions/apply@v2.26.0
+        with:
+          artifact-repository: yschimke/a2ui-catalog-out
+          artifacts-token: ${{ secrets.ARTIFACTS_TOKEN }}
+          phase: all
+          cli-version: catalog
+          catalog-key: composePreviewPlugin
+          only: compose
+          timeout: '1200'
