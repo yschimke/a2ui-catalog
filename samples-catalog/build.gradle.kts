@@ -49,6 +49,7 @@ dependencies {
   implementation(project(":a2ui-harness"))
   implementation(libs.androidx.compose.ui.tooling.preview)
   implementation(libs.androidx.compose.ui.tooling)
+  implementation(platform(libs.composeai.daemon.bom))
   implementation(libs.composeai.preview.annotations)
   implementation(libs.composeai.preview.overrides)
 
