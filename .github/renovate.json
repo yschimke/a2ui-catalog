@@ -5,6 +5,7 @@
     ":dependencyDashboard",
     ":semanticCommits"
   ],
+  "platformAutomerge": true,
   "timezone": "UTC",
   "prConcurrentLimit": 10,
   "packageRules": [
