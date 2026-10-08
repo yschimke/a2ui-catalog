@@ -26,8 +26,8 @@ Plus two generated files at the root:
   the library by `CatalogSchemaTest`.
 - [`ui-builder.policy.json`](ui-builder.policy.json): the catalog as a UI-builder palette. Its
   18 `builtins` are projected from that schema by `scripts/ui-builder-policy.mjs`. A design built
-  from it exports as A2UI JSON, not Kotlin, through the `a2ui-program` interpreter its
-  `composeSourceExport` names.
+  from it exports as the A2UI messages an agent sends, and as the Kotlin an Android app writes to
+  send the same payload, through the `a2ui-program` interpreter its `composeSourceExport` names.
 - [`ui-builder/designs/`](ui-builder/designs): the New design chooser's starting points, named by
   the policy's `templates`: `a2ui-column` (the builder's built-in seed, frozen), `booking-card` and
   `contact-form`. Each uses only this palette, so it draws on the catalog's renderer runtime and
