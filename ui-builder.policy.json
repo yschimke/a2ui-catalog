@@ -32,6 +32,17 @@
       "Fields"
     ]
   },
+  "$comment_templates": "The New design chooser's starting points, as branch-relative paths the design-artifacts pipeline copies from ui-builder/designs/ onto the delivery branch beside ui-builder.json. `a2ui-column` is first and is the built-in seed frozen: the document compose-ui-builder's Kotlin `a2uiUiBuilderDocument` writes today, so a design created either side of the catalog-owned cutover starts the same. The other two are worked surfaces an agent would plausibly send, a card with two actions and a form bound to the data model. Every one is built only from this palette, because the generic blank screen an owned catalog otherwise falls back to is the builder's own layout vocabulary, which no A2UI client can draw and which the A2UI export refuses.",
+  "templates": [
+    "ui-builder/designs/a2ui-column.json",
+    "ui-builder/designs/booking-card.json",
+    "ui-builder/designs/contact-form.json"
+  ],
+  "$comment_composeSourceExport": "A design here exports as the A2UI payload (createSurface, updateDataModel, updateComponents) and as the Kotlin an Android app writes to send it, through the interpreter compose-ui-builder ships for it (A2uiDocumentExporter / A2uiComposeExporter). Declaring it is what lets an owned catalog keep its export: under the catalog-owned cutover a catalog with no declaration offers none.",
+  "composeSourceExport": {
+    "adapter": "a2ui-program",
+    "version": 1
+  },
   "builtins": {
     "a2ui/Text": {
       "role": "decoration",

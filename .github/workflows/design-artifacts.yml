@@ -17,6 +17,7 @@ on:
       - 'catalog/**'
       - 'catalog.spec.json'
       - 'ui-builder.policy.json'
+      - 'ui-builder/**'
       - 'samples-catalog/**'
       - 'a2ui-ui-builder-renderer/**'
       - 'vendor/**'
