@@ -44,8 +44,8 @@ compose-multiplatform-material3 = "1.13.0-alpha01"
 # artifacts with jvm and wasmJs variants.
 androidx-collection = "1.6.0"
 androidx-annotation = "1.10.0"
-kotlinx-serialization-json = "1.7.3"
-kotlinx-coroutines = "1.9.0"
+kotlinx-serialization-json = "1.11.0"
+kotlinx-coroutines = "1.11.0"
 
 [libraries]
 a2ui-model = { module = "androidx.a2ui:a2ui-model", version.ref = "a2ui" }
