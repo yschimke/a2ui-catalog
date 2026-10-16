@@ -56,7 +56,7 @@ jobs:
           # room for a cold Gradle cache.
           timeout: '1200'
 
-      - uses: actions/upload-artifact@v7.0.1
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: compose-preview-handoff
           path: _compose_preview_handoff/

@@ -37,13 +37,13 @@ jobs:
 
       # The Figma join (design-map.json) is projected from the annotations; a reference edited in
       # Kotlin but not re-projected would publish the old node.
-      - uses: actions/setup-node@v7.0.0
+      - uses: actions/setup-node@v7.1.0
         with:
-          node-version: 24.21.0
+          node-version: 24.22.0
       - name: design-map.json matches the annotations
         run: scripts/design-map.sh --check
 
-      - uses: actions/upload-artifact@v7.0.1
+      - uses: actions/upload-artifact@v7.0.2
         if: always()
         with:
           name: previews-manifest
@@ -65,7 +65,7 @@ jobs:
       # `CatalogInventoryTest` (one card per basic-catalog component, each mapped or excused).
       - run: ./gradlew test --stacktrace
       - if: always()
-        uses: actions/upload-artifact@v7.0.1
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: test-reports
           path: |
@@ -94,7 +94,7 @@ jobs:
             echo "$module: $got / $want"
             [ "$got" -eq "$want" ] || { echo "::error::$module rendered $got PNGs, expected $want"; exit 1; }
           done
-      - uses: actions/upload-artifact@v7.0.1
+      - uses: actions/upload-artifact@v7.0.2
         if: always()
         with:
           name: renders
@@ -130,7 +130,7 @@ jobs:
           :vendor:a2ui-port-runtime:compileTestKotlinWasmJs
           :a2ui-desktop:test
           publishA2uiCmpToBuildDir
-      - uses: actions/upload-artifact@v7.0.1
+      - uses: actions/upload-artifact@v7.0.2
         if: always()
         with:
           name: a2ui-cmp-port
@@ -191,9 +191,9 @@ jobs:
           ref: v2.35.0
           path: compose-ai-tools
           persist-credentials: false
-      - uses: actions/setup-node@v7.0.0
+      - uses: actions/setup-node@v7.1.0
         with:
-          node-version: 24.21.0
+          node-version: 24.22.0
       - name: Install catalog validation driver
         run: |
           compose-ai-tools/.github/scripts/install-export-driver.sh \
