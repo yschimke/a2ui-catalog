@@ -97,14 +97,14 @@ internal object MaterialA2uiBasicCatalogV1Slider : A2uiBasicCatalogV1.Slider {
 
                 val sliderState =
                     remember(steps, valueRange) {
-                        // CMP-PORT: `trackRange` is material3 1.5.0-alpha28; CMP's alpha27 names it `valueRange`.
-                        SliderState(value = coercedValue, steps = steps, valueRange = valueRange)
+                        // CMP-PORT: CMP alpha02 now exposes the upstream trackRange API.
+                        SliderState(value = coercedValue, steps = steps, trackRange = valueRange)
                     }
                 sliderState.value = coercedValue
-                sliderState.onValueChange = onValueChange // CMP-PORT: alpha27 takes it on the state.
 
                 Slider(
                     state = sliderState,
+                    onValueChange = onValueChange,
                     modifier =
                         Modifier.sliderAccessibility(accessibility = accessibility, label = label)
                             .semantics {

@@ -20,8 +20,8 @@ through Robolectric and do not depend on anything here).
   basic-catalog id, `A2uiBasicCatalogV1.CatalogId` stopped being `const`, and the Material `Button`
   and `TextField` lay out differently. Vendoring main would have ported a library nobody released,
   so the pin records main only as a reference and lists those differences.
-- **`portRevision: 1`.** Published versions are `<release>-cmp<portRevision>`, so this is
-  `1.0.0-alpha01-cmp01`. They are immutable: bump `portRevision` whenever published bytes change
+- **`portRevision: 2`.** Published versions are `<release>-cmp<portRevision>`, so this is
+  `1.0.0-alpha01-cmp02`. They are immutable: bump `portRevision` whenever published bytes change
   without moving to a newer release. CI enforces it
   ([`check-a2ui-cmp-port-revision.sh`](../.github/scripts/check-a2ui-cmp-port-revision.sh)).
 
@@ -38,7 +38,7 @@ through Robolectric and do not depend on anything here).
 
 Packages are upstream's (`androidx.a2ui.*`, `androidx.compose.material3.a2ui.*`), so code written
 against the AARs compiles against the port unchanged. The Compose closure is Compose Multiplatform
-**1.13.0-alpha01** (runtime/ui/foundation/animation/material3), whose Android variants re-export
+**1.13.0-alpha02** (runtime/ui/foundation/animation/material3), whose Android variants re-export
 AndroidX Compose 1.13.0-alpha02 and material3 1.5.0-alpha27 — one alpha behind the 1.13.0-alpha03 /
 1.5.0-alpha28 `material3-a2ui`'s POM names, and the closest line that exists. `androidx.collection`
 1.6.0, `androidx.annotation` 1.10.0, `kotlinx-serialization-json` and `kotlinx-coroutines` are the
@@ -96,9 +96,9 @@ an import line) and `import kotlin.jvm.` (added imports). 67 of 187 files change
 7. **`DateTimeInput`** (2 lines). `is24HourFormat(LocalContext.current)` becomes
    `is24HourFormat()` (no `Context` off Android), and `LocalLocale.current.platformLocale` (internal
    in CMP's common API) becomes `Locales.forLanguageTag(LocalLocale.current.toLanguageTag())`.
-8. **`Slider`** (3 lines). CMP material3 1.13.0-alpha01 is AndroidX material3 1.5.0-alpha27, which
-   predates `SliderState(trackRange = …)` and `Slider(state, onValueChange = …)`; the port passes
-   `valueRange =` and sets `sliderState.onValueChange` instead. Same behaviour, older spelling.
+8. **`Slider`**. CMP material3 1.13.0-alpha02 now exposes upstream's
+   `SliderState(trackRange = …)` and `Slider(state, onValueChange = …)`. The alpha27
+   compatibility patch is removed; the port uses upstream's API again.
 9. **Build-level, not source**: `material3-a2ui` opts in to `ExperimentalMaterial3Api`
    (`DatePickerDialog` is still experimental in alpha27), and `a2ui-model` declares
    `kotlinx-coroutines-core` as `api` (its `A2uiMessageProcessor` exposes `StateFlow`; on Android it
