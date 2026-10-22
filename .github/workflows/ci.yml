@@ -39,7 +39,7 @@ jobs:
       # Kotlin but not re-projected would publish the old node.
       - uses: actions/setup-node@v7.1.0
         with:
-          node-version: 24.22.0
+          node-version: 24.22.1
       - name: design-map.json matches the annotations
         run: scripts/design-map.sh --check
 
@@ -193,7 +193,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@v7.1.0
         with:
-          node-version: 24.22.0
+          node-version: 24.22.1
       - name: Install catalog validation driver
         run: |
           compose-ai-tools/.github/scripts/install-export-driver.sh \
