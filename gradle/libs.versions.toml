@@ -23,7 +23,7 @@ androidx-compose-material3 = "1.5.0-alpha28"
 
 # compose-ai-tools: the `ee.schimke.composeai.preview` Gradle plugin and the reusable CI
 # actions/workflows are one release — keep both pinned together.
-composePreviewPlugin = "2.68.2"
+composePreviewPlugin = "2.70.7"
 # compose-preview-daemon: `preview-annotations` and `data-preview-overrides-runtime`, on a release
 # line of their own. They are versionless below and resolve through compose-preview-daemon-bom:
 # the daemon publishes only the modules a release changed, so a per-module pin at the release
