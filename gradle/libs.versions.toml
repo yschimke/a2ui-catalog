@@ -30,7 +30,7 @@ composePreviewPlugin = "2.70.7"
 # version 404s the first time a release skips one. The BOM may lead the plugin (its renderer
 # resolves in this runtime graph, so a newer BOM aligns both) but must not predate the daemon the
 # plugin bakes in (2.35.0 bakes 3.13.2).
-composePreviewDaemon = "3.18.7"
+composePreviewDaemon = "3.21.4"
 
 # ── The Compose Multiplatform port (vendor/) ────────────────────────────────────────────────────
 # The in-tree CMP port of the A2UI release train above (see vendor/README.md). Pinned to the
