@@ -14,7 +14,7 @@ robolectric = "4.17"
 # basic catalog). They are cut together and a skewed pair fails at runtime, when a catalog built
 # against one engine is handed to another's message processor — so all three move in one PR.
 # Renovate groups them (.github/renovate.json).
-a2ui = "1.0.0-alpha01"
+a2ui = "1.0.0-alpha02"
 # The AndroidX Compose line `material3-a2ui` 1.0.0-alpha01's POM depends on. Pinned to exactly what
 # the library was built against rather than to the newest alpha, so the stickers draw the catalog's
 # components on the Compose they were written for.
