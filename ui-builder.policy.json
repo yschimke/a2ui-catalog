@@ -73,7 +73,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         {
           "name": "text",
@@ -130,7 +130,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         {
           "name": "description",
@@ -239,7 +239,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         }
       ]
     },
@@ -263,7 +263,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         {
           "name": "url",
@@ -287,7 +287,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         {
           "name": "description",
@@ -335,7 +335,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         {
           "name": "align",
@@ -398,7 +398,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         {
           "name": "align",
@@ -461,7 +461,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         {
           "name": "align",
@@ -526,7 +526,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         }
       ]
     },
@@ -556,7 +556,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         }
       ]
     },
@@ -598,7 +598,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         {
           "name": "accessibility",
@@ -638,7 +638,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         }
       ]
     },
@@ -680,7 +680,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         {
           "name": "action",
@@ -746,7 +746,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         {
           "name": "label",
@@ -776,7 +776,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         {
           "name": "checks",
@@ -847,8 +847,8 @@
           "jsonType": "string",
           "required": false,
           "allowedValues": [
-            "mutuallyExclusive",
-            "multipleSelection"
+            "multipleSelection",
+            "mutuallyExclusive"
           ],
           "notes": "A hint for how the choice picker should be displayed and behave."
         },
@@ -862,7 +862,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         {
           "name": "label",
@@ -916,7 +916,7 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         {
           "name": "label",
@@ -982,13 +982,13 @@
           "name": "weight",
           "jsonType": "number",
           "required": false,
-          "notes": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "notes": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         {
           "name": "label",
           "jsonType": "string",
           "required": false,
-          "notes": "The text label for the component. A2UI type: DynamicString"
+          "notes": "The text label for the input field. A2UI type: DynamicString"
         },
         {
           "name": "value",
