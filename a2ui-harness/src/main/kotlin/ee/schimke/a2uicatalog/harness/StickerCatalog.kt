@@ -1,7 +1,8 @@
 package ee.schimke.a2uicatalog.harness
 
 import androidx.a2ui.compose.ui.A2uiCatalog
-import androidx.a2ui.model.catalog.functions.A2uiLocaleProvider
+import androidx.a2ui.compose.ui.catalog.A2uiBasicCatalogV1
+import androidx.a2ui.model.protocol.A2uiExecutionContext
 import androidx.compose.material3.a2ui.catalog.MaterialA2uiBasicCatalogV1Defaults
 import androidx.compose.material3.a2ui.catalog.materialA2uiBasicCatalogV1
 
@@ -14,8 +15,7 @@ import androidx.compose.material3.a2ui.catalog.materialA2uiBasicCatalogV1
  * differ between runs or depend on the network. Everything the MATERIAL catalog decides — the size
  * an image `variant` gets, its clip, the audio player's controls — is still the library's.
  *
- * `urlOpener` is a no-op because nothing here may navigate, and `messageFormatter` echoes the
- * pattern, which is what the AndroidX samples themselves pass.
+ * The catalog's functions are [StickerFunctions]: the library defaults, with `openUrl` a no-op.
  */
 val StickerCatalog: A2uiCatalog =
   materialA2uiBasicCatalogV1(
@@ -32,7 +32,17 @@ val StickerCatalog: A2uiCatalog =
       MaterialA2uiBasicCatalogV1Defaults.audioPlayer { url, contentDescription, modifier, _ ->
         StickerMedia.AudioPlayer(url, contentDescription, modifier)
       },
-    urlOpener = {},
-    messageFormatter = { pattern, _, _ -> pattern },
-    localeProvider = A2uiLocaleProvider.Default,
+    functions = StickerFunctions,
   )
+
+/**
+ * The basic catalog's functions as a render harness needs them. Since 1.0.0-alpha02 the catalog
+ * takes one [A2uiBasicCatalogV1.Functions] in place of the separate `urlOpener`, `messageFormatter`
+ * and `localeProvider`. `openUrl` is the only member without a default, and it is a no-op because
+ * nothing here may navigate. The formatting functions keep their defaults, which format in the
+ * default locale as `A2uiLocaleProvider.Default` did. The context-free form is used deliberately:
+ * `A2uiBasicCatalogV1.Functions(context)` would open URLs with a browsable intent.
+ */
+private object StickerFunctions : A2uiBasicCatalogV1.Functions {
+  override fun openUrl(url: String, executionContext: A2uiExecutionContext) {}
+}

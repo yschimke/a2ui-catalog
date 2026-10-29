@@ -26,7 +26,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         "text": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -76,7 +76,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         "description": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -192,7 +192,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         }
       },
       "required": [
@@ -213,7 +213,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         "url": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -235,7 +235,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         "description": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -264,7 +264,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         "align": {
           "type": "string",
@@ -300,8 +300,8 @@
         }
       },
       "required": [
-        "component",
-        "children"
+        "children",
+        "component"
       ],
       "description": "A layout component that arranges its children horizontally. To create a grid layout, nest Columns within this Row."
     },
@@ -314,7 +314,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         "align": {
           "type": "string",
@@ -350,8 +350,8 @@
         }
       },
       "required": [
-        "component",
-        "children"
+        "children",
+        "component"
       ],
       "description": "A layout component that arranges its children vertically. To create a grid layout, nest Rows within this Column."
     },
@@ -364,7 +364,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         "align": {
           "type": "string",
@@ -395,8 +395,8 @@
         }
       },
       "required": [
-        "component",
-        "children"
+        "children",
+        "component"
       ],
       "description": "A scrollable list of components laid out vertically or horizontally."
     },
@@ -412,7 +412,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         "child": {
           "$ref": "common_types.json#/$defs/ComponentId",
@@ -420,8 +420,8 @@
         }
       },
       "required": [
-        "component",
-        "child"
+        "child",
+        "component"
       ],
       "description": "A layout component that wraps its child content in a styled card container."
     },
@@ -447,8 +447,8 @@
               }
             },
             "required": [
-              "title",
-              "child"
+              "child",
+              "title"
             ],
             "additionalProperties": false
           },
@@ -460,7 +460,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         }
       },
       "required": [
@@ -478,7 +478,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         "trigger": {
           "$ref": "common_types.json#/$defs/ComponentId",
@@ -494,8 +494,8 @@
       },
       "required": [
         "component",
-        "trigger",
-        "content"
+        "content",
+        "trigger"
       ],
       "description": "A dialog window."
     },
@@ -520,7 +520,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         }
       },
       "required": [
@@ -547,7 +547,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         "action": {
           "$ref": "common_types.json#/$defs/Action"
@@ -568,9 +568,9 @@
         }
       },
       "required": [
-        "component",
         "action",
-        "child"
+        "child",
+        "component"
       ],
       "description": "A clickable button that dispatches an action."
     },
@@ -608,7 +608,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         "label": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -634,7 +634,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         "checks": {
           "type": "array",
@@ -696,8 +696,8 @@
         "variant": {
           "type": "string",
           "enum": [
-            "mutuallyExclusive",
-            "multipleSelection"
+            "multipleSelection",
+            "mutuallyExclusive"
           ],
           "default": "mutuallyExclusive",
           "description": "A hint for how the choice picker should be displayed and behave."
@@ -726,7 +726,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         "label": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -772,7 +772,7 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         "label": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -871,11 +871,11 @@
         },
         "weight": {
           "type": "number",
-          "description": "The relative weight of the component within a Row or Column. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
+          "description": "The relative weight of this component within a Row or Column. This is similar to the CSS 'flex-grow' property. Note: this may ONLY be set when the component is a direct descendant of a Row or Column."
         },
         "label": {
           "$ref": "common_types.json#/$defs/DynamicString",
-          "description": "The text label for the component."
+          "description": "The text label for the input field."
         },
         "value": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -890,26 +890,22 @@
     }
   },
   "functions": {
-    "and": {
+    "required": {
       "type": "object",
       "properties": {
         "call": {
           "type": "string",
-          "const": "and"
+          "const": "required"
         },
         "args": {
           "type": "object",
           "properties": {
-            "values": {
-              "type": "array",
-              "items": {
-                "$ref": "common_types.json#/$defs/DynamicBoolean"
-              },
-              "description": "The list of boolean values to evaluate."
+            "value": {
+              "description": "The value to check."
             }
           },
           "required": [
-            "values"
+            "value"
           ],
           "additionalProperties": false
         },
@@ -919,11 +915,125 @@
         }
       },
       "required": [
-        "call",
-        "args"
+        "args",
+        "call"
       ],
       "additionalProperties": false,
-      "description": "Performs a logical AND operation on a list of boolean values."
+      "description": "Checks that the value is not null, undefined, or empty."
+    },
+    "regex": {
+      "type": "object",
+      "properties": {
+        "call": {
+          "type": "string",
+          "const": "regex"
+        },
+        "args": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "$ref": "common_types.json#/$defs/DynamicString"
+            },
+            "pattern": {
+              "type": "string",
+              "description": "The regex pattern to match against."
+            }
+          },
+          "required": [
+            "pattern",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        "returnType": {
+          "type": "string",
+          "const": "boolean"
+        }
+      },
+      "required": [
+        "args",
+        "call"
+      ],
+      "additionalProperties": false,
+      "description": "Checks that the value matches a regular expression string."
+    },
+    "length": {
+      "type": "object",
+      "properties": {
+        "call": {
+          "type": "string",
+          "const": "length"
+        },
+        "args": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "$ref": "common_types.json#/$defs/DynamicString"
+            },
+            "min": {
+              "type": "number",
+              "description": "The minimum allowed length."
+            },
+            "max": {
+              "type": "number",
+              "description": "The maximum allowed length."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        "returnType": {
+          "type": "string",
+          "const": "boolean"
+        }
+      },
+      "required": [
+        "args",
+        "call"
+      ],
+      "additionalProperties": false,
+      "description": "Checks string length constraints."
+    },
+    "numeric": {
+      "type": "object",
+      "properties": {
+        "call": {
+          "type": "string",
+          "const": "numeric"
+        },
+        "args": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "$ref": "common_types.json#/$defs/DynamicNumber"
+            },
+            "min": {
+              "type": "number",
+              "description": "The minimum allowed value."
+            },
+            "max": {
+              "type": "number",
+              "description": "The maximum allowed value."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        "returnType": {
+          "type": "string",
+          "const": "boolean"
+        }
+      },
+      "required": [
+        "args",
+        "call"
+      ],
+      "additionalProperties": false,
+      "description": "Checks numeric range constraints."
     },
     "email": {
       "type": "object",
@@ -950,11 +1060,82 @@
         }
       },
       "required": [
-        "call",
-        "args"
+        "args",
+        "call"
       ],
       "additionalProperties": false,
       "description": "Checks that the value is a valid email address."
+    },
+    "formatString": {
+      "type": "object",
+      "properties": {
+        "call": {
+          "type": "string",
+          "const": "formatString"
+        },
+        "args": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "$ref": "common_types.json#/$defs/DynamicString"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        "returnType": {
+          "type": "string",
+          "const": "string"
+        }
+      },
+      "required": [
+        "args",
+        "call"
+      ],
+      "additionalProperties": false,
+      "description": "Performs string interpolation of data model values and other functions in the catalog functions list and returns the resulting string. The value string can contain interpolated expressions in the ${expression} format. Supported expression types include: JSON Pointer paths to the data model (e.g., ${/absolute/path} or ${relative/path}), and client-side function calls (e.g., ${now()}). Function arguments must be named (e.g., ${formatDate(value:${/currentDate}, format:'MM-dd')}). To include a literal ${ sequence, escape it as \\${."
+    },
+    "formatNumber": {
+      "type": "object",
+      "properties": {
+        "call": {
+          "type": "string",
+          "const": "formatNumber"
+        },
+        "args": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "$ref": "common_types.json#/$defs/DynamicNumber",
+              "description": "The number to format."
+            },
+            "decimals": {
+              "$ref": "common_types.json#/$defs/DynamicNumber",
+              "description": "Optional. The number of decimal places to show. Defaults to 0 or 2 depending on locale."
+            },
+            "grouping": {
+              "$ref": "common_types.json#/$defs/DynamicBoolean",
+              "description": "Optional. If true, uses locale-specific grouping separators (e.g. '1,000'). If false, returns raw digits (e.g. '1000'). Defaults to true."
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        "returnType": {
+          "type": "string",
+          "const": "string"
+        }
+      },
+      "required": [
+        "args",
+        "call"
+      ],
+      "additionalProperties": false,
+      "description": "Formats a number with the specified grouping and decimal precision."
     },
     "formatCurrency": {
       "type": "object",
@@ -995,8 +1176,8 @@
         }
       },
       "required": [
-        "call",
-        "args"
+        "args",
+        "call"
       ],
       "additionalProperties": false,
       "description": "Formats a number as a currency string."
@@ -1032,259 +1213,11 @@
         }
       },
       "required": [
-        "call",
-        "args"
+        "args",
+        "call"
       ],
       "additionalProperties": false,
       "description": "Formats a timestamp into a string using a pattern."
-    },
-    "formatNumber": {
-      "type": "object",
-      "properties": {
-        "call": {
-          "type": "string",
-          "const": "formatNumber"
-        },
-        "args": {
-          "type": "object",
-          "properties": {
-            "value": {
-              "$ref": "common_types.json#/$defs/DynamicNumber",
-              "description": "The number to format."
-            },
-            "decimals": {
-              "$ref": "common_types.json#/$defs/DynamicNumber",
-              "description": "Optional. The number of decimal places to show. Defaults to 0 or 2 depending on locale."
-            },
-            "grouping": {
-              "$ref": "common_types.json#/$defs/DynamicBoolean",
-              "description": "Optional. If true, uses locale-specific grouping separators (e.g. '1,000'). If false, returns raw digits (e.g. '1000'). Defaults to true."
-            }
-          },
-          "required": [
-            "value"
-          ],
-          "additionalProperties": false
-        },
-        "returnType": {
-          "type": "string",
-          "const": "string"
-        }
-      },
-      "required": [
-        "call",
-        "args"
-      ],
-      "additionalProperties": false,
-      "description": "Formats a number with the specified grouping and decimal precision."
-    },
-    "formatString": {
-      "type": "object",
-      "properties": {
-        "call": {
-          "type": "string",
-          "const": "formatString"
-        },
-        "args": {
-          "type": "object",
-          "properties": {
-            "value": {
-              "$ref": "common_types.json#/$defs/DynamicString"
-            }
-          },
-          "required": [
-            "value"
-          ],
-          "additionalProperties": false
-        },
-        "returnType": {
-          "type": "string",
-          "const": "string"
-        }
-      },
-      "required": [
-        "call",
-        "args"
-      ],
-      "additionalProperties": false,
-      "description": "Performs string interpolation of data model values and other functions in the catalog functions list and returns the resulting string. The value string can contain interpolated expressions in the ${expression} format. Supported expression types include: JSON Pointer paths to the data model (e.g., ${/absolute/path} or ${relative/path}), and client-side function calls (e.g., ${now()}). Function arguments must be named (e.g., ${formatDate(value:${/currentDate}, format:'MM-dd')}). To include a literal ${ sequence, escape it as \\${."
-    },
-    "length": {
-      "type": "object",
-      "properties": {
-        "call": {
-          "type": "string",
-          "const": "length"
-        },
-        "args": {
-          "type": "object",
-          "properties": {
-            "value": {
-              "$ref": "common_types.json#/$defs/DynamicString"
-            },
-            "min": {
-              "type": "number",
-              "description": "The minimum allowed length."
-            },
-            "max": {
-              "type": "number",
-              "description": "The maximum allowed length."
-            }
-          },
-          "required": [
-            "value"
-          ],
-          "additionalProperties": false
-        },
-        "returnType": {
-          "type": "string",
-          "const": "boolean"
-        }
-      },
-      "required": [
-        "call",
-        "args"
-      ],
-      "additionalProperties": false,
-      "description": "Checks string length constraints."
-    },
-    "not": {
-      "type": "object",
-      "properties": {
-        "call": {
-          "type": "string",
-          "const": "not"
-        },
-        "args": {
-          "type": "object",
-          "properties": {
-            "value": {
-              "$ref": "common_types.json#/$defs/DynamicBoolean",
-              "description": "The boolean value to negate."
-            }
-          },
-          "required": [
-            "value"
-          ],
-          "additionalProperties": false
-        },
-        "returnType": {
-          "type": "string",
-          "const": "boolean"
-        }
-      },
-      "required": [
-        "call",
-        "args"
-      ],
-      "additionalProperties": false,
-      "description": "Performs a logical NOT operation on a boolean value."
-    },
-    "numeric": {
-      "type": "object",
-      "properties": {
-        "call": {
-          "type": "string",
-          "const": "numeric"
-        },
-        "args": {
-          "type": "object",
-          "properties": {
-            "value": {
-              "$ref": "common_types.json#/$defs/DynamicNumber"
-            },
-            "min": {
-              "type": "number",
-              "description": "The minimum allowed value."
-            },
-            "max": {
-              "type": "number",
-              "description": "The maximum allowed value."
-            }
-          },
-          "required": [
-            "value"
-          ],
-          "additionalProperties": false
-        },
-        "returnType": {
-          "type": "string",
-          "const": "boolean"
-        }
-      },
-      "required": [
-        "call",
-        "args"
-      ],
-      "additionalProperties": false,
-      "description": "Checks numeric range constraints."
-    },
-    "openUrl": {
-      "type": "object",
-      "properties": {
-        "call": {
-          "type": "string",
-          "const": "openUrl"
-        },
-        "args": {
-          "type": "object",
-          "properties": {
-            "url": {
-              "type": "string",
-              "description": "The URL to open."
-            }
-          },
-          "required": [
-            "url"
-          ],
-          "additionalProperties": false
-        },
-        "returnType": {
-          "type": "string",
-          "const": "void"
-        }
-      },
-      "required": [
-        "call",
-        "args"
-      ],
-      "additionalProperties": false,
-      "description": "Opens the specified URL in a browser or handler. This function has no return value."
-    },
-    "or": {
-      "type": "object",
-      "properties": {
-        "call": {
-          "type": "string",
-          "const": "or"
-        },
-        "args": {
-          "type": "object",
-          "properties": {
-            "values": {
-              "type": "array",
-              "items": {
-                "$ref": "common_types.json#/$defs/DynamicBoolean"
-              },
-              "description": "The list of boolean values to evaluate."
-            }
-          },
-          "required": [
-            "values"
-          ],
-          "additionalProperties": false
-        },
-        "returnType": {
-          "type": "string",
-          "const": "boolean"
-        }
-      },
-      "required": [
-        "call",
-        "args"
-      ],
-      "additionalProperties": false,
-      "description": "Performs a logical OR operation on a list of boolean values."
     },
     "pluralize": {
       "type": "object",
@@ -1326,8 +1259,8 @@
             }
           },
           "required": [
-            "value",
-            "other"
+            "other",
+            "value"
           ],
           "additionalProperties": false
         },
@@ -1337,33 +1270,64 @@
         }
       },
       "required": [
-        "call",
-        "args"
+        "args",
+        "call"
       ],
       "additionalProperties": false,
       "description": "Returns a localized string based on the Common Locale Data Repository (CLDR) plural category of the count (zero, one, two, few, many, other). Requires an 'other' fallback. For English, just use 'one' and 'other'."
     },
-    "regex": {
+    "openUrl": {
       "type": "object",
       "properties": {
         "call": {
           "type": "string",
-          "const": "regex"
+          "const": "openUrl"
         },
         "args": {
           "type": "object",
           "properties": {
-            "value": {
-              "$ref": "common_types.json#/$defs/DynamicString"
-            },
-            "pattern": {
+            "url": {
               "type": "string",
-              "description": "The regex pattern to match against."
+              "description": "The URL to open."
             }
           },
           "required": [
-            "value",
-            "pattern"
+            "url"
+          ],
+          "additionalProperties": false
+        },
+        "returnType": {
+          "type": "string",
+          "const": "void"
+        }
+      },
+      "required": [
+        "args",
+        "call"
+      ],
+      "additionalProperties": false,
+      "description": "Opens the specified URL in a browser or handler. This function has no return value."
+    },
+    "and": {
+      "type": "object",
+      "properties": {
+        "call": {
+          "type": "string",
+          "const": "and"
+        },
+        "args": {
+          "type": "object",
+          "properties": {
+            "values": {
+              "type": "array",
+              "items": {
+                "$ref": "common_types.json#/$defs/DynamicBoolean"
+              },
+              "description": "The list of boolean values to evaluate."
+            }
+          },
+          "required": [
+            "values"
           ],
           "additionalProperties": false
         },
@@ -1373,24 +1337,60 @@
         }
       },
       "required": [
-        "call",
-        "args"
+        "args",
+        "call"
       ],
       "additionalProperties": false,
-      "description": "Checks that the value matches a regular expression string."
+      "description": "Performs a logical AND operation on a list of boolean values."
     },
-    "required": {
+    "or": {
       "type": "object",
       "properties": {
         "call": {
           "type": "string",
-          "const": "required"
+          "const": "or"
+        },
+        "args": {
+          "type": "object",
+          "properties": {
+            "values": {
+              "type": "array",
+              "items": {
+                "$ref": "common_types.json#/$defs/DynamicBoolean"
+              },
+              "description": "The list of boolean values to evaluate."
+            }
+          },
+          "required": [
+            "values"
+          ],
+          "additionalProperties": false
+        },
+        "returnType": {
+          "type": "string",
+          "const": "boolean"
+        }
+      },
+      "required": [
+        "args",
+        "call"
+      ],
+      "additionalProperties": false,
+      "description": "Performs a logical OR operation on a list of boolean values."
+    },
+    "not": {
+      "type": "object",
+      "properties": {
+        "call": {
+          "type": "string",
+          "const": "not"
         },
         "args": {
           "type": "object",
           "properties": {
             "value": {
-              "description": "The value to check."
+              "$ref": "common_types.json#/$defs/DynamicBoolean",
+              "description": "The boolean value to negate."
             }
           },
           "required": [
@@ -1404,11 +1404,11 @@
         }
       },
       "required": [
-        "call",
-        "args"
+        "args",
+        "call"
       ],
       "additionalProperties": false,
-      "description": "Checks that the value is not null, undefined, or empty."
+      "description": "Performs a logical NOT operation on a boolean value."
     }
   },
   "$defs": {
@@ -1493,10 +1493,25 @@
     "anyFunction": {
       "oneOf": [
         {
-          "$ref": "#/functions/and"
+          "$ref": "#/functions/required"
+        },
+        {
+          "$ref": "#/functions/regex"
+        },
+        {
+          "$ref": "#/functions/length"
+        },
+        {
+          "$ref": "#/functions/numeric"
         },
         {
           "$ref": "#/functions/email"
+        },
+        {
+          "$ref": "#/functions/formatString"
+        },
+        {
+          "$ref": "#/functions/formatNumber"
         },
         {
           "$ref": "#/functions/formatCurrency"
@@ -1505,34 +1520,19 @@
           "$ref": "#/functions/formatDate"
         },
         {
-          "$ref": "#/functions/formatNumber"
-        },
-        {
-          "$ref": "#/functions/formatString"
-        },
-        {
-          "$ref": "#/functions/length"
-        },
-        {
-          "$ref": "#/functions/not"
-        },
-        {
-          "$ref": "#/functions/numeric"
+          "$ref": "#/functions/pluralize"
         },
         {
           "$ref": "#/functions/openUrl"
         },
         {
+          "$ref": "#/functions/and"
+        },
+        {
           "$ref": "#/functions/or"
         },
         {
-          "$ref": "#/functions/pluralize"
-        },
-        {
-          "$ref": "#/functions/regex"
-        },
-        {
-          "$ref": "#/functions/required"
+          "$ref": "#/functions/not"
         }
       ]
     }
