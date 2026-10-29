@@ -38,8 +38,8 @@ composePreviewDaemon = "3.26.0"
 # `material3-a2ui` 1.0.0-alpha01's POM names: CMP 1.13.0-alpha01 is AndroidX Compose 1.13.0-alpha02
 # and material3 1.5.0-alpha27, one alpha behind the POM's 1.13.0-alpha03 / 1.5.0-alpha28. The 1.12
 # line the sibling desktop catalogs render on is a whole Compose minor behind the library.
-compose-multiplatform = "1.13.0-alpha02"
-compose-multiplatform-material3 = "1.13.0-alpha02"
+compose-multiplatform = "1.13.0-beta01"
+compose-multiplatform-material3 = "1.13.0-beta01"
 # What the upstream POMs name, so the port declares the same closure. All three are multiplatform
 # artifacts with jvm and wasmJs variants.
 androidx-collection = "1.7.0"
