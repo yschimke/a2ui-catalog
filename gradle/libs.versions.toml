@@ -3,7 +3,7 @@ kotlin = "2.4.21"
 ktfmt = "0.27.0"
 # The Android Gradle Plugin. `material3-a2ui`'s AAR metadata asks for AGP 9.1.0 or newer and
 # `compileSdk` 37.1; 9.4.1 is the line the sibling catalogs (m3-catalog, wear-m3-catalog) build on.
-agp = "9.4.1"
+agp = "9.5.0"
 # Robolectric is what actually executes the previews. Pinned to the version the sibling repositories
 # render with, so the Android lanes cannot skew.
 robolectric = "4.17"
