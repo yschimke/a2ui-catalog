@@ -6,7 +6,7 @@ ktfmt = "0.27.0"
 agp = "9.5.1"
 # Robolectric is what actually executes the previews. Pinned to the version the sibling repositories
 # render with, so the Android lanes cannot skew.
-robolectric = "4.17"
+robolectric = "4.18"
 
 # ── The A2UI alpha ──────────────────────────────────────────────────────────────────────────────
 # Three groups, one release train: `androidx.a2ui` (the protocol model and engine),
