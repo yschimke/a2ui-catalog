@@ -4,13 +4,13 @@
   "libraries": [
     {
       "name": "material3-a2ui-demo",
-      "ref": "e6bfe347707b0e0003e253189cb5ec5f4dda8fbf",
-      "refDescription": "androidx-main on 2026-09-25, two days after material3-a2ui 1.0.0-alpha01.",
+      "ref": "f3ed67ecaa994e7403a774fab1449f6cb0e1b4a1",
+      "refDescription": "androidx-main on 2026-10-14, matching material3-a2ui 1.0.0-alpha02 (published 2026-10-21) right before the unpublished compose-ui-tooling-preview module (98b3d9f6).",
       "paths": [
         "compose/material3/integration-tests/material3-a2ui/src/main/java/androidx/compose/material3/integration/a2ui"
       ],
       "artifactCoordinates": "androidx.compose.material3:material3-a2ui",
-      "artifactVersion": "1.0.0-alpha01"
+      "artifactVersion": "1.0.0-alpha02"
     }
   ]
 }
