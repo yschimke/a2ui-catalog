@@ -32,7 +32,7 @@ jobs:
           github-token: ${{ github.token }}
       - id: pr
         run: echo "number=$(cat _compose_preview_handoff/_pr_number)" >> "$GITHUB_OUTPUT"
-      - uses: yschimke/compose-ai-tools/.github/actions/apply@e3b07e32d913840fa6065708c5621fc1c604a76b # v2.99.2
+      - uses: yschimke/compose-ai-tools/.github/actions/apply@e84355a48d27d8ee21a6eedd425560fd9b2889cb # v2.101.0
         with:
           phase: publish
           pr-number: ${{ steps.pr.outputs.number }}
