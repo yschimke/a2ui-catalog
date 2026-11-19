@@ -4,11 +4,11 @@
   "libraries": [
     {
       "name": "material3-a2ui-demo",
-      "ref": "e6bfe347707b0e0003e253189cb5ec5f4dda8fbf",
+      "ref": "f3ed67ecaa994e7403a774fab1449f6cb0e1b4a1",
       "paths": [
         "compose/material3/integration-tests/material3-a2ui/src/main/java/androidx/compose/material3/integration/a2ui"
       ],
-      "artifact": "androidx.compose.material3:material3-a2ui:1.0.0-alpha01",
+      "artifact": "androidx.compose.material3:material3-a2ui:1.0.0-alpha02",
       "files": 36
     }
   ],
