@@ -107,7 +107,7 @@ private fun start(actions: UiBuilderSemanticActionController, family: FontFamily
               emptyMap(),
               UiBuilderPixelBounds(0f, 0f, it.size.width.toFloat(), it.size.height.toFloat()),
             )
-          }
+          },
         ) {
           when (design) {
             is LoweredDesign.Refused -> Refusal(design.reasons)
@@ -132,8 +132,8 @@ private fun DesignSurface(
     Refusal(
       listOf(
         applied.exceptionOrNull()?.message
-          ?: "the A2UI engine did not create surface ${design.surfaceId}"
-      )
+          ?: "the A2UI engine did not create surface ${design.surfaceId}",
+      ),
     )
     return
   }
@@ -152,7 +152,7 @@ private fun DesignSurface(
             origin.y + coordinates.size.height * unit.y,
           )
         }
-      }
+      },
   ) {
     Box(Modifier.fillMaxSize()) { A2uiSurface(surfaceModel = surfaceModel, transitionSpec = null) }
   }
@@ -161,7 +161,7 @@ private fun DesignSurface(
 @Composable
 private fun Refusal(reasons: List<String>) {
   Column(
-    Modifier.fillMaxSize().background(MaterialTheme.colorScheme.errorContainer).padding(16.dp)
+    Modifier.fillMaxSize().background(MaterialTheme.colorScheme.errorContainer).padding(16.dp),
   ) {
     Text(
       "This design cannot be sent as A2UI",

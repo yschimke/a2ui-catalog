@@ -112,7 +112,7 @@ abstract class AssembleCatalogRendererRuntime : DefaultTask() {
     output
       .resolve("runtime-manifest.json")
       .writeText(
-        """{"schema":"compose-ui-builder-runtime/v1","runtimeId":"${runtimeId.get()}","protocolVersion":2,"entrypoint":"index.html","integritySha256":"$integrity"}"""
+        """{"schema":"compose-ui-builder-runtime/v1","runtimeId":"${runtimeId.get()}","protocolVersion":2,"entrypoint":"index.html","integritySha256":"$integrity"}""",
       )
   }
 

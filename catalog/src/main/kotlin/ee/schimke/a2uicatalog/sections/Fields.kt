@@ -26,7 +26,7 @@ private fun TextFieldOf(variant: String, value: String, label: String = "Full na
         "label" to label,
         "value" to bind("/value"),
         "variant" to variant,
-      )
+      ),
     ),
     data = mapOf("value" to value),
   )
@@ -82,7 +82,7 @@ fun TextFieldEmptySticker() = TextFieldOf("shortText", "")
 private fun CheckBoxOf(checked: Boolean) =
   A2uiSticker(
     listOf(
-      component("root", "CheckBox", "label" to "Email me a receipt", "value" to bind("/checked"))
+      component("root", "CheckBox", "label" to "Email me a receipt", "value" to bind("/checked")),
     ),
     data = mapOf("checked" to checked),
   )
@@ -124,7 +124,7 @@ private fun ChoicePickerOf(
         "displayStyle" to displayStyle,
         "options" to SEATS,
         "value" to bind("/selected"),
-      )
+      ),
     ),
     data = mapOf("selected" to selected),
   )
@@ -180,7 +180,7 @@ fun SliderSticker() =
         "min" to 0,
         "max" to 100,
         "value" to bind("/volume"),
-      )
+      ),
     ),
     data = mapOf("volume" to 40),
   )
@@ -196,7 +196,7 @@ private fun DateTimeOf(date: Boolean, time: Boolean, label: String) =
         "enableDate" to date,
         "enableTime" to time,
         "value" to bind("/when"),
-      )
+      ),
     ),
     data = mapOf("when" to "2026-09-03T14:30:00Z"),
   )

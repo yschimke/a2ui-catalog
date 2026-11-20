@@ -94,7 +94,7 @@ fun CardSticker() =
         "action" to event("book"),
       ),
       component("primary_text", "Text", "text" to "Book"),
-    )
+    ),
   )
 
 @CatalogComponent(
@@ -115,14 +115,14 @@ fun TabsSticker() =
           listOf("Flights", "Hotels", "Cars").mapIndexed { i, title ->
             mapOf("title" to title, "child" to "tab_$i")
           },
-      )
+      ),
     ) +
       listOf(
           "Three direct flights today.",
           "Twelve hotels near the centre.",
           "Pick-up at arrivals.",
         )
-        .mapIndexed { i, text -> component("tab_$i", "Text", "text" to text, "variant" to "body") }
+        .mapIndexed { i, text -> component("tab_$i", "Text", "text" to text, "variant" to "body") },
   )
 
 @CatalogComponent(
@@ -149,5 +149,5 @@ fun ModalSticker() =
       component("dialog", "Column", "children" to listOf("dialog_title", "dialog_body")),
       component("dialog_title", "Text", "text" to "Delete project?", "variant" to "h3"),
       component("dialog_body", "Text", "text" to "This cannot be undone.", "variant" to "body"),
-    )
+    ),
   )

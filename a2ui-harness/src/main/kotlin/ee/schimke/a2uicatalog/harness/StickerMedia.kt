@@ -68,7 +68,7 @@ object StickerMedia {
         1.0f to c,
         start = Offset.Zero,
         end = Offset(INTRINSIC, INTRINSIC),
-      )
+      ),
     )
   }
 

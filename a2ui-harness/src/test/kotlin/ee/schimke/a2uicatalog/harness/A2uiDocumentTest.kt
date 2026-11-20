@@ -32,7 +32,7 @@ class A2uiDocumentTest {
         """
         {"version":"v0.9","createSurface":{"surfaceId":"s","catalogId":"${StickerCatalog.id}"}}
         {"version":"v0.9","updateComponents":{"surfaceId":"s","components":$card}}
-        """
+        """,
       )
     assertEquals(emptyList(), document.errors)
     assertEquals("s", document.surfaceId)
@@ -44,7 +44,7 @@ class A2uiDocumentTest {
     val document =
       A2uiDocument.parse(
         """[{"version":"v0.9","createSurface":{"surfaceId":"s","catalogId":"${StickerCatalog.id}"}},
-            {"version":"v0.9","updateComponents":{"surfaceId":"s","components":$card}}]"""
+            {"version":"v0.9","updateComponents":{"surfaceId":"s","components":$card}}]""",
       )
     assertEquals(2, document.messages.size)
     rendered(document)
@@ -65,7 +65,7 @@ class A2uiDocumentTest {
         """
         {"version":"v0.9","createSurface":{"surfaceId":"s","catalogId":"${StickerCatalog.id}"}}
         {"version":"v7","updateComponents":{"surfaceId":"s","components":[]}}
-        """
+        """,
       )
     assertEquals(1, document.messages.size)
     assertTrue(document.errors.single().startsWith("message 2:"), document.errors.toString())
@@ -88,7 +88,7 @@ class A2uiDocumentTest {
         {"version":"v0.9","createSurface":
         {"version":"v0.9","createSurface":{"surfaceId":"s","catalogId":"${StickerCatalog.id}"}}
         {"version":"v0.9","updateComponents":{"surfaceId":"s","components":$card}}
-        """
+        """,
       )
     assertEquals(2, document.messages.size)
     assertTrue(document.errors.single().startsWith("message 1:"), document.errors.toString())
@@ -102,7 +102,7 @@ class A2uiDocumentTest {
         """
         {"version":"v0.9","createSurface":{"surfaceId":"s","catalogId":"https://example.com/other"}}
         {"version":"v0.9","updateComponents":{"surfaceId":"s","components":$card}}
-        """
+        """,
       )
     assertEquals(emptyList(), document.errors)
     val host = StickerHost(StickerCatalog)

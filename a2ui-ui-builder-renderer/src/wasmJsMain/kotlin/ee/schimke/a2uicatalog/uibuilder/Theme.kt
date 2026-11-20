@@ -27,7 +27,7 @@ internal fun loadRoboto(onLoaded: (FontFamily) -> Unit, onFailed: (String) -> Un
         FontFamily(
           Font("Roboto-Regular", regular.toByteArray(), FontWeight.Normal),
           Font("Roboto-Medium", medium.toByteArray(), FontWeight.Medium),
-        )
+        ),
       )
     },
     onFailed = { onFailed(it.toString()) },
@@ -68,7 +68,7 @@ private fun JsAny.toByteArray(): ByteArray =
     }).then((buffer) => new Int8Array(buffer));
     Promise.all([load('Roboto-Regular.ttf'), load('Roboto-Medium.ttf')])
       .then(([regular, medium]) => onLoaded(regular, medium), (error) => onFailed(String(error)));
-  }"""
+  }""",
 )
 private external fun fetchFonts(onLoaded: (JsAny, JsAny) -> Unit, onFailed: (JsString) -> Unit)
 

@@ -29,7 +29,7 @@ private fun ButtonOf(variant: String, label: String = "Confirm", child: String =
       ),
       if (child == "Text") component("content", "Text", "text" to label)
       else component("content", "Icon", "name" to "send"),
-    )
+    ),
   )
 
 @CatalogComponent(

@@ -56,7 +56,7 @@ internal fun lowerDesign(document: UiBuilderDocument): LoweredDesign {
           put("surfaceId", SURFACE_ID)
           put("catalogId", A2uiDocumentExporter.BASIC_CATALOG_ID)
         },
-      )
+      ),
     )
     if (lowered.data.isNotEmpty()) {
       add(
@@ -67,7 +67,7 @@ internal fun lowerDesign(document: UiBuilderDocument): LoweredDesign {
             put("path", "/")
             put("value", lowered.data)
           },
-        )
+        ),
       )
     }
     add(
@@ -77,7 +77,7 @@ internal fun lowerDesign(document: UiBuilderDocument): LoweredDesign {
           put("surfaceId", SURFACE_ID)
           put("components", JsonArray(components))
         },
-      )
+      ),
     )
   }
   return LoweredDesign.Messages(SURFACE_ID, messages.map(JsonObject::toString), designNodeIds)

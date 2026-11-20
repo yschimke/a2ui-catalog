@@ -89,7 +89,7 @@ private constructor(
           envelope(
             "updateComponents",
             JSONObject().put("components", document.getJSONArray("components")),
-          )
+          ),
         )
       }
     }
