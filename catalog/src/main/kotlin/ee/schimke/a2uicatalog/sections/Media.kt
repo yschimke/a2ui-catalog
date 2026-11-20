@@ -28,8 +28,8 @@ private fun ImageOf(variant: String, fit: String = "cover") =
         "description" to "Tram on a Lisbon street",
         "variant" to variant,
         "fit" to fit,
-      )
-    )
+      ),
+    ),
   )
 
 @CatalogComponent(
@@ -92,6 +92,6 @@ fun AudioPlayerSticker() =
         "AudioPlayer",
         "url" to "https://example.com/a2ui/briefing.mp3",
         "description" to "Morning briefing",
-      )
-    )
+      ),
+    ),
   )

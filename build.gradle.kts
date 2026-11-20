@@ -55,7 +55,7 @@ configure(publishedA2uiCmpProjects.map(::project)) {
         name.set("A2UI Compose Multiplatform port: ${project.name}")
         description.set(
           "AndroidX A2UI ${a2uiUpstream["release"]} (${project.name}) compiled for Compose " +
-            "Multiplatform (jvm, wasmJs). Not an AndroidX artifact; see vendor/README.md."
+            "Multiplatform (jvm, wasmJs). Not an AndroidX artifact; see vendor/README.md.",
         )
         url.set("https://github.com/yschimke/a2ui-catalog/tree/main/vendor")
         licenses {

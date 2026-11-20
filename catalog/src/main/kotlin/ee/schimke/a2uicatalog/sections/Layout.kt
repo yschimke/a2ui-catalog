@@ -46,7 +46,7 @@ private fun StretchedRow(justify: String) =
         "justify" to justify,
         "align" to "center",
       ),
-    ) + items("item").flatten()
+    ) + items("item").flatten(),
   )
 
 @CatalogComponent(
@@ -98,7 +98,7 @@ private fun ColumnOf(align: String) =
         "action" to mapOf("event" to mapOf("name" to "book")),
       ),
       component("action_text", "Text", "text" to "Book"),
-    )
+    ),
   )
 
 @CatalogComponent(

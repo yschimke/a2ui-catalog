@@ -174,7 +174,7 @@ internal fun payloadDocument(
         envelope(
           "createSurface",
           JSONObject().put("surfaceId", SAMPLE_SURFACE_ID).put("catalogId", StickerCatalog.id),
-        )
+        ),
       )
       if (data.isNotEmpty()) {
         add(
@@ -184,7 +184,7 @@ internal fun payloadDocument(
               .put("surfaceId", SAMPLE_SURFACE_ID)
               .put("path", "/")
               .put("value", jsonValue(data)),
-          )
+          ),
         )
       }
       add(
@@ -199,10 +199,10 @@ internal fun payloadDocument(
                   JSONObject().put("id", component.id).put("component", component.type).also {
                     for ((key, value) in component.properties) it.put(key, jsonValue(value))
                   }
-                }
+                },
               ),
             ),
-        )
+        ),
       )
     }
     .joinToString("\n")

@@ -110,7 +110,7 @@ fun DividerSticker() =
       component("above", "Text", "text" to "Inbox", "variant" to "body"),
       component("rule", "Divider", "axis" to "horizontal"),
       component("below", "Text", "text" to "Archive", "variant" to "body"),
-    )
+    ),
   )
 
 @CatalogVariant(

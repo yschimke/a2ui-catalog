@@ -101,7 +101,7 @@ private fun MediaPlaceholder(modifier: Modifier) {
     modifier
       .fillMaxWidth()
       .aspectRatio(16f / 9f)
-      .background(MaterialTheme.colorScheme.surfaceVariant)
+      .background(MaterialTheme.colorScheme.surfaceVariant),
   )
 }
 

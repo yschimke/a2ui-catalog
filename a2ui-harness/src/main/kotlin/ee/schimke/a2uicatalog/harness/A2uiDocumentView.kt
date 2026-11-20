@@ -34,7 +34,7 @@ fun A2uiDocumentView(source: String, modifier: Modifier = Modifier) {
         if (surface == null && document.errors.isEmpty()) {
           listOf(
             "The engine created no surface `${document.surfaceId}`. Is its catalogId " +
-              "`${StickerCatalog.id}`?"
+              "`${StickerCatalog.id}`?",
           )
         } else {
           document.errors
